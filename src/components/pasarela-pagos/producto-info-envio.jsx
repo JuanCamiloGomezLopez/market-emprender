@@ -3,7 +3,7 @@ import { Button } from "../Elements_IU/Buttons";
 import { ButtonCar } from "../Elements_IU/Buttons-car";
 
 export function ItemproductEnvio({ item, caritemsMap }) {
-  console.log(caritemsMap);
+
   return (
     <Container>
       <h4 className="title-container">
@@ -14,7 +14,7 @@ export function ItemproductEnvio({ item, caritemsMap }) {
           {caritemsMap.map((producto) => {
             if (producto.emprendimiento === item) {
               return (
-                <div className="imagenes">
+                <div className="imagenes" key={producto.id}>
                   <img className="img-datos-envio" src={producto.imageUrl} />
                   <h6 className="titulo-producto">
                     <strong>{producto.producto}</strong>

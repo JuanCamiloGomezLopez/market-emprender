@@ -10,7 +10,7 @@ export function Button ({ children, buttonType, ...otherprops }){
   };
 
   return (
-    <Button_styled
+    <Button_styled 
       className={BUTTON_TYPE_CLASSES[buttonType]}
       {...otherprops}
     >

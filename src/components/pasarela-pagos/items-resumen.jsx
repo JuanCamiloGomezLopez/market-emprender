@@ -3,7 +3,6 @@ import styled from "styled-components";
 export function ItemsResumen({ cartitem }) {
   const { imageUrl, producto, price_oferta, quantity } = cartitem;
 
-  console.log(cartitem);
   return (
     <Container>
       <div className="imagen">

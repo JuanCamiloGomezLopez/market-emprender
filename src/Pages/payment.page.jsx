@@ -6,6 +6,7 @@ import { ItemproductEnvio } from "../components/pasarela-pagos/producto-info-env
 import { InformacionPersonal } from "../components/pasarela-pagos/informacion-personal";
 import { ResumenPagos } from "../components/pasarela-pagos/resumen-pagos";
 import { DatosEnvio } from "../components/pasarela-pagos/datos-envio";
+import { PayTarjeta } from "../components/pasarela-pagos/PayTarjeta";
 
 export function PagosProducto() {
   const caritemsMap = useSelector(selectcartItems);
@@ -33,14 +34,15 @@ export function PagosProducto() {
             {caritemsMap_number_emprendimientos.map((item) => {
               return (
                 <ItemproductEnvio
-                  key={item.emprendimiento}
+                  key={item}
                   item={item}
                   caritemsMap={caritemsMap}
                 />
               );
             })}
           </div>
-          <div className="container-tarjetas"></div>
+          <h3 className="title-tarjeta">Metodos de pago</h3>
+         <PayTarjeta />
         </div>
         <ResumenPagos />
       </div>
@@ -84,14 +86,11 @@ const Container = styled.div`
         border-radius: 10px;
         padding: 0 20px 20px 20px;
       }
-      .container-tarjetas {
-        width: 100%;
-        height: 200px;
-        border: 1px solid rgb(218, 218, 218);
-        border-radius: 10px;
-        padding: 0 20px 20px 20px;
-        margin-top: 20px;
-      }
+    
+    }
+
+    .title-tarjeta{
+      margin-top: 30px;
     }
   }
 `;
