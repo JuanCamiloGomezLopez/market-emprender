@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { signInWithEmailAndPassword1 } from "../../utils/firebase.utils";
 import { useState } from "react";
-import { Button100 } from "../Elements_IU/Buttons100";
+import { Button } from "../Elements_IU/Buttons";
 import { useNavigate } from "react-router-dom"
 
 export function Login() {
@@ -62,11 +62,10 @@ export function Login() {
         value={password}
         name="password"
       ></input>
-
      
-        <Button100 buttonType="default" type="submit">
+        <Button buttonType="complet" type="submit">
           Iniciar sesion
-        </Button100>
+        </Button>
       
      
     </Login_container>

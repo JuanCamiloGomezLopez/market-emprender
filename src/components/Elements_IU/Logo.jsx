@@ -5,27 +5,28 @@ import { Link } from "react-router-dom";
 export function Logo() {
   return (
     <Link to="/">
-      <Container>
+      <Container_logo>
         <img className="img-logo" src={logo} />
-        <div className="content">
+        <div className="content_logo">
           <h2>Market Up</h2>
           <p>Enlace Emprendedor</p>
         </div>
-      </Container>
+      </Container_logo>
     </Link>
   );
 }
-const Container = styled.div`
+const Container_logo = styled.div`
   width: 145px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
 
   .img-logo {
     width: 35px;
     height: auto;
   }
-  .content {
+  .content_logo {
     
 
     p {

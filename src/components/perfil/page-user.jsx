@@ -1,36 +1,15 @@
 import styled from "styled-components";
-import { useSelector, useDispatch } from "react-redux";
-import { selectListUser } from "../../store/user/user.selector";
-import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { CardFavorites } from "./card.favorites";
 import { selectIsFavorite } from "../../store/favorites/favorite.selector";
-import { setproductfavorite } from "../../store/favorites/favorite.reduce";
 import { Navbar } from "../navbar/Navbar";
-
-export function PageUser() {
-  const currentuser = useSelector((state) => state.user.currentUser);
-  const dispatch = useDispatch();
-  const listuser = useSelector(selectListUser);
+export function PageUser() { 
   const productfavorite = useSelector(selectIsFavorite);
-
-  useEffect(() => {
-    const getproducts = async () => {
-      listuser.map((item) => {
-        if (item.email === currentuser.email) {
-          dispatch(setproductfavorite(item));
-          
-        }
-      });
-    };
-    getproducts();
-  }, [dispatch]);
-
   const arrayprodcut = Object.values(productfavorite);
 
   return (
     <Container>
       <Navbar />
-
       <div className="subcontainer">
         <div className="registro-compras-container">
           <h2 className="titulo1">Mi Historial de compras</h2>

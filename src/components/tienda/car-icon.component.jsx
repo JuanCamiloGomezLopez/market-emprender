@@ -1,7 +1,6 @@
 import shoppingicon from "../../assets/shopping-bag.svg";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-
 import {
   selectIsCarOpen,
   selectCarCount,
@@ -11,12 +10,8 @@ import { setCaropen } from "../../store/cart/cart.reducer";
 export function CartIcon() {
   const dispatch = useDispatch();
   const carcount = useSelector(selectCarCount);
-  
   const opencar = useSelector(selectIsCarOpen);
-
   const toggleIsCarOpen = () => dispatch(setCaropen(!opencar));
-
- 
 
   return (
     <CarIconContainer onClick={toggleIsCarOpen}>

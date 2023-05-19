@@ -7,7 +7,6 @@ import { HistoriaEmprendedor } from "../Pages/historia.emprendedor";
 import { Tienda } from "../Pages/tienda.virtual";
 import { PreventaPage } from "../Pages/preventa.page";
 import { PagosProducto } from "../Pages/payment.page";
-
 import {
   onAuthStateChangedListener,
   createUserDocumentFromAuth,
@@ -18,10 +17,17 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { UserProfile } from "../Pages/user.page";
 import { setListUser } from "../store/user/user.reduce";
+import { selectListUser } from "../store/user/user.selector";
+import { setproductfavorite } from "../store/favorites/favorite.reduce";
+import { useSelector } from "react-redux";
+import { EventosPage } from "../Pages/eventos.page";
 
 export function Myroutes() {
+  const currentuser = useSelector((state) => state.user.currentUser);
   const dispatch = useDispatch();
+  const listuser = useSelector(selectListUser);
 
+  // ESCUCHAMOS CUANDO UN USUARIO DSE LOGEA Y LO GUARDAMOS EN EL ESTADO CURRENTUSER
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener((user) => {
       if (user) {
@@ -39,6 +45,7 @@ export function Myroutes() {
     return unsubscribe;
   }, []);
 
+  // RECOLECTAMOS TODOS LOS USUARIOS
   useEffect(() => {
     const getlistUserMap = async () => {
       const listaarray = await getlisUserAndDocuments();
@@ -46,6 +53,20 @@ export function Myroutes() {
     };
     getlistUserMap();
   }, []);
+
+  // RECOLECTAMOS LOS PRODUCTOS FAVORITOS DEL USUARIO LOGEADO
+  useEffect(() => {
+    const getproducts = async () => {
+      if (currentuser) {
+        listuser.map((item) => {
+          if (item.email === currentuser.email) {
+            dispatch(setproductfavorite(item));
+          }
+        });
+      }
+    };
+    getproducts();
+  }, [dispatch, listuser]);
 
   return (
     <BrowserRouter>
@@ -59,6 +80,8 @@ export function Myroutes() {
         <Route path="/tienda" element={<Tienda />} />
         <Route path="/pasarela_pagos" element={<PagosProducto />} />
         <Route path="/profile/*" element={<UserProfile />} />
+        <Route path="/events" element={<EventosPage />} />
+
       </Routes>
     </BrowserRouter>
   );

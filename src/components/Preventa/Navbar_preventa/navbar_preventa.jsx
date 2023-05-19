@@ -9,53 +9,55 @@ import { useState } from "react";
 import { Authentication } from "../../modales/modal-authentication";
 import { selectIsSiginOpen } from "../../../store/user/user.selector";
 import { setSigninOpen } from "../../../store/user/user.reduce";
+import { CartIcon } from "../../tienda/car-icon.component";
 
 export function Navbar_Preventa() {
   const currentuser = useSelector((state) => state.user.currentUser);
 
+  const [clicke, setClick] = useState(false);
+
   const isopenmodalsign = useSelector(selectIsSiginOpen);
   const [openoutuser, setOpenoutUser] = useState(false);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const seignOuthandler = async () => {
     await sigOutUser();
     setOpenoutUser(false);
   };
 
-  const openuserout = () => {    
+  const openuserout = () => {
     setOpenoutUser(!openoutuser);
   };
   return (
-    <Container_navbar>
-      <Logo />
+    <Container_navbar clicke={clicke}>
+      <div className="container-logo">
+        <Logo />
+      </div>
 
       {currentuser ? (
-        <div className="items-container">
-          
+        <div className="items-container" clicke={clicke}>
           <Link to="/profile">
             <span className="navbar-items"> Mis Favoritos</span>
           </Link>
           <Link to="/profile">
-            <span className="navbar-items">  Historial de compras</span>
-          </Link>      
+            <span className="navbar-items"> Historial de compras</span>
+          </Link>
           <Link to="/tienda">
             <span className="navbar-items"> Tienda Virtual</span>
           </Link>
         </div>
       ) : (
-        <div className="items-container">
+        <div className="items-container" clicke={clicke}>
           <span
             onClick={() => dispatch(setSigninOpen(!isopenmodalsign))}
             className="navbar-items"
           >
-           
             Mis Favoritos
           </span>
           <span
             onClick={() => dispatch(setSigninOpen(!isopenmodalsign))}
             className="navbar-items"
           >
-            
             Historial de compras
           </span>
           <Link to="/tienda">
@@ -68,7 +70,9 @@ export function Navbar_Preventa() {
         {currentuser ? (
           <div className="fotoperfil">
             <div className="circulo">
-              <h5 className="text">{currentuser.email.toUpperCase().substring(0, 1)}</h5>
+              <h5 className="text">
+                {currentuser.email.toUpperCase().substring(0, 1)}
+              </h5>
             </div>
             <h5 className="text-1">{currentuser.email}</h5>
             <AiOutlineDown className="icon" onClick={openuserout} />
@@ -89,8 +93,19 @@ export function Navbar_Preventa() {
             </a>
           </div>
         )}
+
       </div>
-  <Authentication />
+          <div className="car-icon">
+             <CartIcon />
+          </div>
+     
+
+      <HamburgerMenu
+        clicke={clicke}
+        onClick={() => setClick(!clicke)}
+      ></HamburgerMenu>
+
+      <Authentication />
     </Container_navbar>
   );
 }
@@ -105,10 +120,37 @@ const Container_navbar = styled.div`
   font-weight: 700;
   padding: 0 80px;
 
+  @media (max-width: 760px) {
+    padding: 0 20px;
+  }
+
+  .container-logo {
+    z-index: 20;
+  }
+
   .items-container {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 760px) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 400px;
+      width: 100%;
+      z-index: 10;
+      background-color: rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(4px);
+      transform: ${(props) =>
+        props.clicke ? "translateY(0)" : "translateY(-1000%)"};
+      transition: all 0.3s ease;
+      flex-direction: column;
+      justify-content: center;
+      touch-action: none;
+      border-radius: 0 0 10px 10px;
+    }
 
     .navbar-items {
       padding: 0 40px;
@@ -121,6 +163,10 @@ const Container_navbar = styled.div`
     align-items: center;
     justify-content: right;
     width: 250px;
+
+    @media (max-width: 760px) {
+      display: none;
+    }
 
     .sign-in {
       display: flex;
@@ -194,5 +240,53 @@ const Container_navbar = styled.div`
         }
       }
     }
+  }
+
+  .car-icon{
+    display: none;
+    margin-right: 40px;
+
+    @media (max-width: 760px) {
+    display: flex;
+  }
+  }
+`;
+
+const HamburgerMenu = styled.span`
+  width: 1.5rem;
+  height: 2px;
+  background: ${(props) => props.theme.text};
+  position: absolute;
+  top: 2.8rem;
+  right: 10px;
+  transform: ${(props) =>
+    props.clicke
+      ? "translateX(-50%) rotate(45deg)"
+      : "translateX(-50%) rotate(0)"};
+  display: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 20;
+
+  @media (max-width: 760px) {
+    display: flex;
+  }
+  &::after,
+  &::before {
+    content: " ";
+    width: 1.5rem;
+    height: 2px;
+    background: ${(props) => props.theme.text};
+    position: absolute;
+    transition: all 0.3s ease;
+  }
+  &::after {
+    top: ${(props) => (props.clicke ? "0" : "0.5rem")};
+    transform: ${(props) => (props.clicke ? "rotate(90deg)" : "rotate(0)")};
+  }
+  &::before {
+    bottom: ${(props) => (props.clicke ? "0" : "0.5rem")};
   }
 `;

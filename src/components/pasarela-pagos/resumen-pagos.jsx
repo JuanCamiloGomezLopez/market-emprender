@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { ItemsResumen } from "./items-resumen";
-import { Button100 } from "../Elements_IU/Buttons100";
 import { Button } from "../Elements_IU/Buttons";
 import { useSelector } from "react-redux";
 import { selectcartItems, selectCarTotal } from "../../store/cart/cart.selector";
+
 
 export function ResumenPagos() {
 
@@ -21,7 +21,7 @@ export function ResumenPagos() {
         </div>
         <div className="linea"></div>
         <div className="boton-volver">
-          <Button buttonType="default">Volver al carrito</Button>
+          <Button buttonType="complet">Volver al carrito</Button>
         </div>
         <div className="totales">
           <h3 className="">Subtotal</h3>
@@ -37,7 +37,7 @@ export function ResumenPagos() {
           <h3 className="">136.40 k</h3>
         </div>
         <div className="boton-volver">
-          <Button100 buttonType="amarillo">PAGAR</Button100>
+          <Button buttonType="completamarillo">PAGAR</Button>
         </div>
       </div>
     </Container>

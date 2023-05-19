@@ -3,7 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const INITIAL_STATE = { 
   currentUser: null,
   setSigninOpen: false,
-  listUser: [] };
+  listUser: [],
+  itemUser: [],
+  useruid: "" };
 
 export const userSlice = createSlice({
   name: "users",
@@ -18,9 +20,15 @@ export const userSlice = createSlice({
     setListUser(state, action){
       state.listUser = action.payload
     },
+    setItemcurrentUser(state, action){
+      state.itemUser = action.payload
+    },
+    setUseruid(state, action){
+      state.useruid = action.payload
+    },
   }
 })
 
-export const {setCurrentUser, setSigninOpen, setListUser} = userSlice.actions;
+export const {setCurrentUser, setSigninOpen, setListUser, setItemcurrentUser, setUseruid} = userSlice.actions;
 
 export const userReducer = userSlice.reducer

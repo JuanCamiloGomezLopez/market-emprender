@@ -35,7 +35,7 @@ export function Navbar() {
         <Link to="/">
           <span > Home</span>
         </Link>
-        <Link to="/historias">
+        <Link to="/events">
           <span > Eventos</span>
         </Link>
 

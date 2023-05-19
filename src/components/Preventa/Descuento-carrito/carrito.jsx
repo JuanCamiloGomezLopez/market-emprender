@@ -40,6 +40,10 @@ const Container_carrito = styled.div`
   height: 690px;
   position: relative;
 
+  @media (max-width: 760px) {
+    display: none;
+  }
+
   .container-product {
     width: 100%;
     height: 570px;

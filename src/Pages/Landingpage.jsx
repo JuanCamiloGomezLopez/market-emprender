@@ -7,7 +7,6 @@ import { Eventos } from "../components/landing-page/eventos";
 import { Partedenosotros } from "../components/landing-page/serprtedenosotros";
 import { Comienza } from "../components/landing-page/comienza";
 import { Footer } from "../components/Preventa/footer/footer";
-import { Promocion2 } from "../components/landing-page/promocion2";
 import { PreventasSection_copy } from "../components/landing-page/preventas copy";
 
 export function Landingpage() {
@@ -20,8 +19,7 @@ export function Landingpage() {
       <TiendaSection />
       <Eventos />
       <Partedenosotros />
-      <Comienza />
-      <Promocion2 />
+      <Comienza />     
       <Footer />
     </Container_landing>
   );

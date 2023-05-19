@@ -12,10 +12,19 @@ export const selectIsSiginOpen = createSelector(
     (user)=>user.setSigninOpen
 )
 
-
 export const selectListUser = createSelector(
     [selectUserReducer],
     (user)=> user.listUser
+)
+
+export const selectItemUser = createSelector(
+    [selectUserReducer],
+    (user)=> user.itemUser
+)
+
+export const selectuseruid = createSelector(
+    [selectUserReducer],
+    (user)=> user.useruid
 )
 
 

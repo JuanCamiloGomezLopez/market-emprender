@@ -44,12 +44,15 @@ export function Historias() {
   );
 }
 const Container_historias_preventa = styled.div`
-  width: 100%;
- 
+  width: 100%; 
   padding: 0 0 10px 0;
   border-radius: 8px;
   background-color: white;
   margin-top: 20px;
+  
+  @media (max-width: 760px) {
+      margin-top: 0;
+      }
 
   .title-history {
     width: 100%;

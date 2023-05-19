@@ -8,7 +8,7 @@ export function Footer() {
 }
 const Container_Footer = styled.div`
   width: 100%;
-  height: 100%;
+  height: 400px;
   background-color: ${(props) => props.theme.color1};
   display: flex;
   align-items: center;

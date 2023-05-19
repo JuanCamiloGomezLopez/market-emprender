@@ -17,7 +17,6 @@ export function Portada() {
           Colombianos, comprando en Market Up ayudas a miles de familias que se
           reinventan en el mundo emprendedor.
         </p>
-
         <Link className="container_boton" to="/preventa">
           <Button buttonType="amarillo">VER PREVENTA</Button>
         </Link>

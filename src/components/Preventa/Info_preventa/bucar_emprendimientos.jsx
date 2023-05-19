@@ -42,7 +42,13 @@ const Container_buscar_preventa = styled.div`
 
   .input-search {
     width: 50%;
-    height: 80px;   
+    height: 80px;  
+    
+    @media (max-width: 760px) {
+    width: 100%;
+    margin: 20px 0;
+  }
+
 
     .container-input {
       width: 100%;

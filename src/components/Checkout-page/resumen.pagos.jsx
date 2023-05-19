@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Button100 } from "../Elements_IU/Buttons100";
 import { Button } from "../Elements_IU/Buttons";
 import { Link } from "react-router-dom";
 import { FormInput } from "../Elements_IU/Form-input";
@@ -90,12 +89,12 @@ export function ResumenPagos() {
 
    
         <div className="boton-pago" onClick={open_modal}>
-          <Button100 buttonType="default">CONTINUAR CON EL PAGO</Button100>
+          <Button buttonType="complet">CONTINUAR CON EL PAGO</Button>
         </div>
 
 
       <Link className="boton-compra" to="/preventa">
-        <Button100 buttonType="amarillo">SEGUIR COMPRANDO</Button100>
+        <Button buttonType="completamarillo">SEGUIR COMPRANDO</Button>
       </Link>
       <Authentication />
     </Container_resumen>

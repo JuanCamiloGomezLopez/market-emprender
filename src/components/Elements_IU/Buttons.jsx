@@ -7,6 +7,10 @@ export function Button ({ children, buttonType, ...otherprops }){
     inverted: "inverted",
     facebook: "facebook",
     google: "google",
+    complet: "complet",
+    completamarillo: "completamarillo",
+    facebookcomplet: "facebookcomplet",
+    googlecomplet: "googlecomplet",
   };
 
   return (
@@ -77,6 +81,18 @@ const Button_styled = styled.button`
         border: none;
       }
     }
+    &.facebookcomplet {
+      width: 100%;
+      background-color: #3b5998;
+      color: white;
+   
+
+      &:hover {
+        background-color: #425e9b;
+        color: white;
+        border: none;
+      }
+    }
 
     &.google {
       background-color: #ff2f2f;
@@ -87,6 +103,34 @@ const Button_styled = styled.button`
         background-color: #f73737;
         color: white;
         border: none;
+      }
+    }
+    &.googlecomplet {
+      width: 100%;
+      background-color: #ff2f2f;
+      color: white;
+   
+
+      &:hover {
+        background-color: #f73737;
+        color: white;
+        border: none;
+      }
+    }
+
+    &.complet {
+      width: 100%;      
+    }
+
+    &.completamarillo {
+      width: 100%;  
+      background-color: ${(props) => props.theme.color3};
+      color: ${(props) => props.theme.color1};
+
+      &:hover {
+        background-color: transparent;
+        color: ${(props) => props.theme.color1};
+        border: 1px solid black;;       
       }
     }
   

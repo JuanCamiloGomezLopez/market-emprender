@@ -4,11 +4,19 @@ import { ButtonCar } from "../../Elements_IU/Buttons-car";
 import { addItemToCart } from "../../../store/cart/cart.reducer";
 import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import { selectIsSiginOpen } from "../../../store/user/user.selector";
-import { setSigninOpen } from "../../../store/user/user.reduce";
-import { selectListUser } from "../../../store/user/user.selector";
+import {
+  setSigninOpen,
+  setItemcurrentUser,
+  setUseruid,
+} from "../../../store/user/user.reduce";
+import {
+  selectListUser,
+  selectItemUser,
+  selectIsSiginOpen,
+  selectuseruid,
+} from "../../../store/user/user.selector";
 import { handleEdit, deletefavorite } from "../../../utils/firebase.utils";
-import { useState } from "react";
+import { useEffect } from "react";
 
 export function CardPreventa({ preventa_item, preventa }) {
   const {
@@ -20,38 +28,32 @@ export function CardPreventa({ preventa_item, preventa }) {
     cant_max,
   } = preventa_item;
   const dispatch = useDispatch();
-
   const currentuser = useSelector((state) => state.user.currentUser);
   const isopensign = useSelector(selectIsSiginOpen);
   const listadeusuarios = useSelector(selectListUser);
+  const itemsdeusuarios = useSelector(selectItemUser);
+  const useruid = useSelector(selectuseruid);
 
-  var useruid = "";
+  useEffect(() => {
+    if (currentuser) {
+      listadeusuarios.map((item) => {
+        if (item.email === currentuser.email) {
+          dispatch(setUseruid(item.uid));
+          dispatch(setItemcurrentUser(item));
+        }
+      });
+    }
+  }, []);
 
-  if (currentuser) {
-    listadeusuarios.map((item) => {
-      if (item.email === currentuser.email) {
-        useruid = item.uid;
-      }
-    });
-  }
-
-  const [openfavorite, setOpenfavorite] = useState(false);
   const pushfavorite = () => {
-
     try {
       if (currentuser) {
-        if (!openfavorite) {
+        if (!itemsdeusuarios[producto]) {
           handleEdit(preventa_item, useruid);
-
-          setOpenfavorite(true)
-          window.localStorage.setItem(producto, true);
-          console.log(producto, true)
-        } else if (openfavorite) {
+          console.log("se envio a bd");
+        } else if (itemsdeusuarios[producto]) {
           deletefavorite(preventa_item, useruid);
-
-          setOpenfavorite(false)
-          window.localStorage.setItem(producto, false);
-          console.log(producto, false)
+          console.log("se elimino de bd");
         }
       } else {
         dispatch(setSigninOpen(!isopensign));
@@ -66,13 +68,12 @@ export function CardPreventa({ preventa_item, preventa }) {
   };
 
   return (
-    <Container>
-      {openfavorite ? (
+    <Container_cardPreventa>
+      {itemsdeusuarios[producto] ? (
         <AiFillHeart className="corazon" onClick={pushfavorite} />
       ) : (
         <AiOutlineHeart className="corazon-vacio" onClick={pushfavorite} />
       )}
-
       <Link
         to="/product"
         state={{ product_detail: preventa_item, products_related: preventa }}
@@ -103,10 +104,10 @@ export function CardPreventa({ preventa_item, preventa }) {
           </ButtonCar>
         </div>
       </div>
-    </Container>
+    </Container_cardPreventa>
   );
 }
-const Container = styled.div`
+const Container_cardPreventa = styled.div`
   border-radius: 10px;
   height: 270px;
   background-color: ${(props) => props.theme.color5};
@@ -114,6 +115,12 @@ const Container = styled.div`
   display: inline-block;
   z-index: 0;
   transition: all 0.3s;
+
+  @media (max-width: 760px) {
+    width: 175px;
+    height: auto;
+    justify-content: center;
+  }
   &:hover {
     transform: scale(1.05);
   }
@@ -141,6 +148,12 @@ const Container = styled.div`
     object-fit: cover;
     border-radius: 10px;
     margin: 0 auto;
+
+    @media (max-width: 760px) {
+    
+    height: 150px;
+   
+  }
   }
 
   .titulo {
@@ -164,16 +177,31 @@ const Container = styled.div`
     display: flex;
     align-items: center;
 
+    @media (max-width: 760px) {
+      flex-direction: column;
+    }
+
     .info-caja {
       width: 70%;
       height: 90px;
       padding: 10px;
       line-height: 20px;
       z-index: 5;
+      @media (max-width: 760px) {
+        width: 100%;
+      }
     }
     .information {
       line-height: 20px;
       text-align: center;
+
+      @media (max-width: 760px) {
+       display: flex;
+       justify-content: space-between;
+       padding: 0 10px;
+       width: 100%;
+       margin-bottom: 10px;
+      }
     }
   }
 

@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
-
-export function Diaemprendimiento({searchemp, listadeemprendedores}) {
-
-
+export function Diaemprendimiento({ searchemp, listadeemprendedores }) {
   return (
     <Container>
       <div className="imagen">
-        <img className="img-history" src={listadeemprendedores[searchemp][0].imagehistoria}></img>
+        <img
+          className="img-history"
+          src={listadeemprendedores[searchemp][0].imagehistoria}
+        ></img>
       </div>
       <div className="informacion">
-        <h2 className="titulo">{searchemp}</h2>
-        <p>
+        <h2 className="titulo-search">{searchemp}</h2>
+        <p className="titulo-descr">
           {listadeemprendedores[searchemp][0].descripccion}
         </p>
 
@@ -31,7 +31,7 @@ export function Diaemprendimiento({searchemp, listadeemprendedores}) {
           <h5 className="pregunta">Proxima Preventas:</h5>
           <h5>21 de Mayo de 2023</h5>
         </div>
-        <div className="linea"></div>      
+        <div className="linea"></div>
 
         <div className="content-text">
           <h5 className="pregunta">Siguiente Preventas:</h5>
@@ -54,10 +54,9 @@ const Container = styled.div`
   display: flex;
   align-content: center;
   justify-content: space-between;
- 
-  .titulo{
-    text-align: center;
-    margin-bottom: 20px;
+
+  @media (max-width: 760px) {
+    flex-direction: column;
   }
 
   .imagen {
@@ -65,7 +64,11 @@ const Container = styled.div`
     background-color: #e9e9e9;
     border-radius: 8px;
 
-    .img-history{
+    @media (max-width: 760px) {
+      width: 100%;
+    }
+
+    .img-history {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -75,9 +78,25 @@ const Container = styled.div`
 
   .informacion {
     width: 50%;
-    margin:  auto 0;
+    margin: auto 0;
     padding: 0 40px;
 
+    @media (max-width: 760px) {
+      width: 100%;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    .titulo-search {
+      text-align: center;
+      margin-bottom: 15px;   
+    }
+    .titulo-descr {
+      @media (max-width: 760px) {
+        text-align: center;
+        margin-bottom: 40px;   
+      }
+    }
 
     .content-text {
       margin-top: 15px;

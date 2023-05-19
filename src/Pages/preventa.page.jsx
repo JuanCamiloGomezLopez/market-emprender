@@ -3,20 +3,14 @@ import { Programacion } from "../components/Preventa/Info_preventa/Programacion"
 import { Navbar_Preventa } from "../components/Preventa/Navbar_preventa/navbar_preventa";
 import { Carrito } from "../components/Preventa/Descuento-carrito/carrito";
 import { Historias } from "../components/Preventa/Descuento-carrito/historias";
-import { Opiniones } from "../components/Preventa/Opiniones-tienda/opiniones";
-import { PublicidadTienda } from "../components/Preventa/Opiniones-tienda/publicidadtienda";
 import { Questions } from "../components/Preventa/Preguntas/questions";
 import { Footer } from "../components/Preventa/footer/footer";
 import { useDispatch } from "react-redux";
 import { setPreventa } from "../store/Preventa/preventa.reducer";
 import { setEmprenderlist } from "../store/emprendimientos-list/list.reducer";
 import { useEffect } from "react";
-import {
-  getCategoriesAndDocuments,
-  getlistemprendedoresAndDocuments,
-} from "../utils/firebase.utils";
+import { getCategoriesAndDocuments, getlistemprendedoresAndDocuments } from "../utils/firebase.utils";
 import { PromocionPreventa } from "../components/Preventa/promocion-preventa";
-import { Authentication } from "../components/modales/modal-authentication";
 
 export function PreventaPage() {
   const dispatch = useDispatch();
@@ -40,44 +34,44 @@ export function PreventaPage() {
   return (
     <Container_Preventa>
       <Navbar_Preventa />
-      
       <PromocionPreventa />
-
       <div className="subcontainer-preventa">
         <div className="container-left">
           <div className="center-container">
             <Programacion />
           </div>
         </div>
-
         <div className="container-right">
           <Carrito />
           <Historias />
         </div>
       </div>
-
       <div className="questions">
         <Questions />
       </div>
       <div className="footer">
         <Footer />
       </div>
-
     </Container_Preventa>
   );
 }
 const Container_Preventa = styled.div`
   width: 100%;
   height: 100%;
-
+  overflow-x: hidden;
   .subcontainer-preventa {
     width: 100%;
     display: flex;
 
+    @media (max-width: 760px) {
+      flex-direction: column;
+    }
     .container-left {
       width: 80%;
       height: 100%;
-
+      @media (max-width: 760px) {
+        width: 100%;
+      }
       .center-container {
         width: 90%;
         margin: 0 auto;
@@ -88,12 +82,24 @@ const Container_Preventa = styled.div`
       height: calc(100% + 80px);
       background-color: #eeeeee;
       padding: 20px;
+
+      @media (max-width: 760px) {
+        width: 100%;
+        margin-top: 250px;
+        background-color: ${(props) => props.theme.color3};
+       
+      }
     }
   }
   .questions {
     width: 100%;
-    height: 400px;
-    padding: 30px 40px;
+    height: 500px;
+    padding: 30px 40px; 
+
+    @media (max-width: 760px) {
+        padding: 0 10px;
+        height: 640px;
+      }
   }
 
   .footer {

@@ -8,7 +8,8 @@ import {
   createUserDocumentFromAuth,
   sigInwithFacebookPopup,
 } from "../../utils/firebase.utils";
-import { Button100 } from "../Elements_IU/Buttons100";
+
+import { Button } from "../Elements_IU/Buttons";
 
 
 import { selectIsSiginOpen } from "../../store/user/user.selector";
@@ -74,14 +75,14 @@ export function Authentication() {
         </div>
 
         <div className="btn-facebook">
-          <Button100 onClick={logFaceBookUser} buttonType="facebook">
+          <Button onClick={logFaceBookUser} buttonType="facebookcomplet">
             ACCEDE CON FACEBOOK
-          </Button100>
+          </Button>
         </div>
 
-        <Button100 onClick={logGoogleUser} buttonType="google">
+        <Button onClick={logGoogleUser} buttonType="googlecomplet">
           ACCEDE CON GOOGLE
-        </Button100>
+        </Button>
 
         <div className="without-sesion">
           <h5 className="">Aun no tienes cuenta?</h5>

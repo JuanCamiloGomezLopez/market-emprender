@@ -4,18 +4,17 @@ import {
   createUserWithEmailAndPassword1,
   createUserDocumentFromAuth,
 } from "../../utils/firebase.utils";
-import { Button100 } from "../Elements_IU/Buttons100";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { selectIsSiginOpen } from "../../store/user/user.selector";
-import { setSigninOpen } from "../../store/user/user.reduce";
 import { useSelector, useDispatch } from "react-redux";
+import { Button } from "../Elements_IU/Buttons";
 
 export function SignUp() {
-  const navigate = useNavigate()
-  const defaultformfields = {   
-    displayName:"", 
+  const navigate = useNavigate();
+  const defaultformfields = {
+    displayName: "",
     email: "",
-    password: "",    
+    password: "",
   };
   const [formFields, setFormFields] = useState(defaultformfields);
 
@@ -23,7 +22,7 @@ export function SignUp() {
 
   const { displayName, email, password } = formFields;
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const resetFormFields = () => {
     setFormFields(defaultformfields);
@@ -32,18 +31,16 @@ export function SignUp() {
   const onchangeinput = (e) => {
     const { name, value } = e.target;
     setFormFields({ ...formFields, [name]: value });
-  }; 
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
       const { user } = await createUserWithEmailAndPassword1(email, password);
-      await createUserDocumentFromAuth(user,{displayName});
-      resetFormFields();  
-      dispatch(selectIsSiginOpen(!isopenmodalsign))
-      
-
+      await createUserDocumentFromAuth(user, { displayName });
+      resetFormFields();
+      dispatch(selectIsSiginOpen(!isopenmodalsign));
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
         alert("no puede crear una cuenta con un email ya registrado");
@@ -54,7 +51,7 @@ export function SignUp() {
   };
 
   return (
-    <Container onSubmit={handleSubmit}> 
+    <Container onSubmit={handleSubmit}>
       <input
         className="inputs"
         onChange={onchangeinput}
@@ -70,7 +67,7 @@ export function SignUp() {
         name="password"
         type="password"
       ></input>
-        <input
+      <input
         className="inputs"
         onChange={onchangeinput}
         placeholder="Ingrese name"
@@ -79,7 +76,9 @@ export function SignUp() {
         type="text"
       ></input>
 
-      <Button100 buttonType="amarillo" type="submit">Crear cuenta</Button100>
+      <Button buttonType="completamarillo" type="submit">
+        Crear cuenta
+      </Button>
     </Container>
   );
 }
@@ -88,7 +87,6 @@ const Container = styled.form`
   width: 100%;
   position: relative;
 
-  
   .inputs {
     border: 1px solid rgb(202, 202, 202);
     padding: 8px;
@@ -99,7 +97,7 @@ const Container = styled.form`
     background-color: white;
     color: #4e4e4e;
 
-    &:focus{
+    &:focus {
       border: none;
       outline: 1px solid rgb(179, 186, 255);
     }
@@ -108,5 +106,4 @@ const Container = styled.form`
   p {
     font-size: 12px;
   }
- 
 `;

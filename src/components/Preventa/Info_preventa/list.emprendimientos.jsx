@@ -8,11 +8,9 @@ import { Navigation } from "swiper";
 import { selectEmprendimientosMap } from "../../../store/emprendimientos-list/list.selector";
 import { useSelector } from "react-redux";
 
-
 export function List_Emprendimiento({ getname, setGetname, setGetimage }) {
-
   const listadeemprendedores = useSelector(selectEmprendimientosMap);
-  const valoreslistadeemprendedores = Object.values(listadeemprendedores)
+  const valoreslistadeemprendedores = Object.values(listadeemprendedores);
 
   return (
     <Container getname={getname}>
@@ -69,32 +67,45 @@ const Container = styled.div`
     padding: 0 10px;
     cursor: pointer;
 
+    @media (max-width: 760px) {
+      width: 85px;
+      height: 100px;
+      border-radius: 5px;
+      flex-direction: column;
+      justify-content: center;
+    }
+
     .img-item {
       width: 40px;
       height: 40px;
       object-fit: cover;
-      border-radius: 8px;
+      border-radius: 8px;      
+
+      @media (max-width: 760px) {
+        width: 30px;
+        height: 30px;
+        
+      }
     }
     h4 {
       margin-left: 10px;
       margin-bottom: 3px;
+
+      @media (max-width: 760px) {
+        font-size: 12px;
+        text-align: center;
+        margin-left: 0;
+        margin-top: 5px;
+      }
     }
     p {
       margin-left: 10px;
+      @media (max-width: 760px) {
+        display: none;
+      }
     }
   }
 
-  .select {
-    width: 100px;
-    height: 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-    background-color: ${(props) => props.theme.color3};
-    cursor: pointer;
-  }
   .swiper-button-next {
     background-image: url(${next});
     background-image: center;
@@ -106,13 +117,25 @@ const Container = styled.div`
     &::after {
       display: none;
     }
+    @media (max-width: 760px) {
+      width: 18px;
+      height: 18px;
+      right: 10px;
+      top: 60px;
+    }
   }
 
   .swiper {
     padding-left: 70px;
+
+    @media (max-width: 760px) {
+      padding-left: 40px;
+      
+    }
   }
 
   .swiper-slide {
+   
   }
   .swiper-button-prev {
     background-image: url(${back});
@@ -123,6 +146,12 @@ const Container = styled.div`
     top: 40px;
     &::after {
       display: none;
+    }
+    @media (max-width: 760px) {
+      width: 18px;
+      height: 18px;
+      left: 10px;
+      top: 60px;
     }
   }
 `;
