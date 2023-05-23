@@ -17,7 +17,7 @@ export function InformacionPersonal() {
             <strong>Nombre</strong>: {currentuser ? currentuser.displayName : "Sin información"}
           </h4>
         </div>
-        <div className="content-text">
+        <div className="content-text-cel">
           <h4>
             <strong>Celular</strong>: xxxxxxxxxxxx
           </h4>
@@ -39,6 +39,12 @@ const Container = styled.div`
     display: flex;
     justify-content: space-between;
     padding: 20px;
+  }
+
+  .content-text-cel{
+    @media (max-width: 760px) {
+      display: none;
+    }
   }
   
 `;

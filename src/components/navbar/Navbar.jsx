@@ -17,6 +17,7 @@ export function Navbar() {
   const dispatch = useDispatch();
 
   const isopenmodalsign = useSelector(selectIsSiginOpen);
+  const [clicke, setClick] = useState(false);
 
   const openuserout = () => {
     setOpenoutUser(!openoutuser);
@@ -28,15 +29,15 @@ export function Navbar() {
   };
 
   return (
-    <Container_navbar>
+    <Container_navbar clicke={clicke}>
       <Logo />
 
-      <div className="container-item">        
+      <div className="container-item">
         <Link to="/">
-          <span > Home</span>
+          <span> Home</span>
         </Link>
         <Link to="/events">
-          <span > Eventos</span>
+          <span> Eventos</span>
         </Link>
 
         <Link to="/historias">
@@ -44,34 +45,37 @@ export function Navbar() {
         </Link>
 
         <Link to="/Preventa">
-          <span > Preventas</span>
+          <span> Preventas</span>
         </Link>
 
         <Link to="/tienda">
-          <span > Tienda</span>
+          <span> Tienda</span>
         </Link>
 
         {currentuser ? (
           <Link to="/profile">
-            <span > Perfil</span>
+            <span> Perfil</span>
           </Link>
         ) : (
           <span
             onClick={() => dispatch(setSigninOpen(!isopenmodalsign))}
             className="navbar-items"
-          >      
+          >
             Perfil
           </span>
         )}
+
+        
       </div>
 
       <div className="usuario">
         {currentuser ? (
           <div className="fotoperfil">
             <div className="circulo">
-              <h5 className="text">{currentuser.email.substring(0, 1)}</h5>
+              <h5 className="text">{currentuser.email.toUpperCase().substring(0, 1)}</h5>
+              
             </div>
-            <h5 className="text-1">{currentuser.email}</h5>
+            
             <AiOutlineDown className="icon" onClick={openuserout} />
             {openoutuser ? (
               <div onClick={seignOuthandler} className="outUser">
@@ -91,6 +95,10 @@ export function Navbar() {
           </div>
         )}
       </div>
+      <HamburgerMenu
+        clicke={clicke}
+        onClick={() => setClick(!clicke)}
+      ></HamburgerMenu>
 
       <Authentication />
     </Container_navbar>
@@ -107,6 +115,11 @@ const Container_navbar = styled.div`
   font-weight: 700;
   padding: 0 80px;
 
+  @media (max-width: 760px) {
+    padding: 0 20px;
+    position: fixed;
+    background-color: white;
+  }
 
   .container-logo {
     width: 160px;
@@ -126,15 +139,34 @@ const Container_navbar = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
-  
-    .navbar-items{
+
+    @media (max-width: 760px) {
+      position: fixed;
+      top: 80px;
+      right: 10px;
+      height: 400px;
+      width: 200px;
+      z-index: 10;
+      border-radius: 10px;
+      background: #e9d359b9;
+      backdrop-filter: blur(4px);
+      transform: ${(props) =>
+        props.clicke ? "translateY(0)" : "translateY(-1000%)"};
+      transition: all 0.3s ease;
+      flex-direction: column;
+      justify-content: center;
+      touch-action: none;
+    }
+
+    .navbar-items {
       cursor: pointer;
     }
 
-
     span {
-   
-   
+      @media (max-width: 760px) {
+        font-size: 15px;
+        line-height: 50px;
+      }
 
       &:hover {
         color: ${(props) => props.theme.color2};
@@ -159,6 +191,7 @@ const Container_navbar = styled.div`
     justify-content: right;
     width: 250px;
 
+
     .sign-in {
       display: flex;
       align-items: center;
@@ -180,6 +213,10 @@ const Container_navbar = styled.div`
       align-items: center;
       justify-content: center;
       position: relative;
+     
+    @media (max-width: 760px) {
+      margin-right: 40px;
+    }
 
       .circulo {
         width: 30px;
@@ -204,6 +241,7 @@ const Container_navbar = styled.div`
       }
       .icon {
         cursor: pointer;
+        margin-left: 10px;
       }
 
       .outUser {
@@ -231,5 +269,44 @@ const Container_navbar = styled.div`
         }
       }
     }
+  }
+`;
+
+const HamburgerMenu = styled.span`
+  width: 1.5rem;
+  height: 2px;
+  background: ${(props) => props.theme.text};
+  position: absolute;
+  top: 2.8rem;
+  right: 10px;
+  transform: ${(props) =>
+    props.clicke
+      ? "translateX(-50%) rotate(45deg)"
+      : "translateX(-50%) rotate(0)"};
+  display: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 20;
+
+  @media (max-width: 760px) {
+    display: flex;
+  }
+  &::after,
+  &::before {
+    content: " ";
+    width: 1.5rem;
+    height: 2px;
+    background: ${(props) => props.theme.text};
+    position: absolute;
+    transition: all 0.3s ease;
+  }
+  &::after {
+    top: ${(props) => (props.clicke ? "0" : "0.5rem")};
+    transform: ${(props) => (props.clicke ? "rotate(90deg)" : "rotate(0)")};
+  }
+  &::before {
+    bottom: ${(props) => (props.clicke ? "0" : "0.5rem")};
   }
 `;

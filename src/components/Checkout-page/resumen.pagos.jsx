@@ -14,7 +14,7 @@ import { setSigninOpen } from "../../store/user/user.reduce";
 
 export function ResumenPagos() {
   const currentuser = useSelector((state) => state.user.currentUser);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -31,11 +31,11 @@ export function ResumenPagos() {
   var total = priceactual - totaldescuento + domicilioprice;
 
   const open_modal = () => {
-    if (currentuser) {     
+    if (currentuser) {
       navigate("/pasarela_pagos");
-      dispatch(setSigninOpen(false)); 
+      dispatch(setSigninOpen(false));
     } else {
-      dispatch(setSigninOpen(true));      
+      dispatch(setSigninOpen(true));
     }
   };
 
@@ -87,11 +87,9 @@ export function ResumenPagos() {
         </h4>
       </div>
 
-   
-        <div className="boton-pago" onClick={open_modal}>
-          <Button buttonType="complet">CONTINUAR CON EL PAGO</Button>
-        </div>
-
+      <div className="boton-pago" onClick={open_modal}>
+        <Button buttonType="complet">CONTINUAR CON EL PAGO</Button>
+      </div>
 
       <Link className="boton-compra" to="/preventa">
         <Button buttonType="completamarillo">SEGUIR COMPRANDO</Button>
@@ -109,6 +107,9 @@ const Container_resumen = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media (max-width: 760px) {
+
+  }
 
   .descuento {
     width: 100%;

@@ -29,7 +29,7 @@ export function Tienda() {
 
   const [listproductcategorie, setListproductcategorie] = useState(
     maps[categorie]
-  ); 
+  );
 
   useEffect(() => {
     setListproductcategorie(maps[categorie]);
@@ -37,23 +37,18 @@ export function Tienda() {
 
   return (
     <Container_Blog>
-      <div className="navbar-container">
-        <Navbar_Tienda />
-      </div>
+      <Navbar_Tienda />
       <div className="portada-preventa">
         <img src="https://i.ibb.co/r6dCVHK/arte.jpg" />
       </div>
       <h1 className="title-blog">NUESTRA TIENDA VIRTUAL MARKET UP!</h1>
-
-      <div className="search-categories">
-        <SearchCategories categorie={categorie} setCategorie={setCategorie} />
-      </div>
+      <SearchCategories categorie={categorie} setCategorie={setCategorie} />
       <h3 className="title-list">
         <strong>{categorie.toLocaleUpperCase()}</strong>
       </h3>
 
       <div className="list-emprendimientos">
-      {listproductcategorie.map((item) => (
+        {listproductcategorie.map((item) => (
           <CardEmprendimiento
             className="item-emprendimiento"
             item={item}
@@ -90,9 +85,13 @@ const Container_Blog = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-
     position: relative;
     z-index: 0;
+
+    @media (max-width: 760px) {
+          
+        margin-top: 20px;
+      }
 
     .titleportada {
       color: #000000;
@@ -112,23 +111,36 @@ const Container_Blog = styled.div`
   .title-blog {
     text-align: center;
     padding: 30px;
+    @media (max-width: 760px) {
+        font-size: 18px;       
+        margin-top: 20px;
+      }
   }
 
-  .search-categories {
-    width: 100%;
-    padding: 20px 160px;
-  }
   .list-emprendimientos {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 5px 160px 20px 160px;
 
+
+    @media (max-width: 760px) {
+        width: 100%;
+        padding: 0;
+      
+      }
+
     .item-emprendimiento {
       flex: 1 1 auto;
       display: flex;
       align-items: center;
       justify-content: center;
+
+      @media (max-width: 760px) {
+        width: 100%;
+        display: block;
+        background-color: yellow;
+      }
     }
   }
 
@@ -136,6 +148,12 @@ const Container_Blog = styled.div`
     margin-top: 40px;
     padding: 0 70px;
     margin-bottom: 40px;
+
+    @media (max-width: 760px) {
+      margin-top: 0;
+      padding: 0 10px;
+    margin-bottom:20px;
+      }
   }
 
   .footer {

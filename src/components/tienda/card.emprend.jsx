@@ -5,6 +5,7 @@ import { Fragment } from "react";
 import { ButtonCar } from "../Elements_IU/Buttons-car";
 import { addItemToCart } from "../../store/cart/cart.reducer";
 import { useDispatch } from "react-redux";
+import { Button } from "../Elements_IU/Buttons";
 
 export function CardEmprendimiento({ item, categorie, maps }) {
   const dispatch = useDispatch();
@@ -19,7 +20,10 @@ export function CardEmprendimiento({ item, categorie, maps }) {
           <AiFillLike className="like" />
         </div>
 
-        <Link  to="/product" state={{product_detail: item, products_related: maps[categorie]}}>
+        <Link
+          to="/product"
+          state={{ product_detail: item, products_related: maps[categorie] }}
+        >
           <div className="imagen-relate">
             <img className="product-img" src={item.imageUrl}></img>
           </div>
@@ -56,7 +60,7 @@ export function CardEmprendimiento({ item, categorie, maps }) {
           <h5 className="text">{item.emprendimiento}</h5>
         </div>
         <div className="btn">
-          <ButtonCar
+          <Button
             onClick={hola}
             buttonType="default"
             children="agregar al carro"
@@ -72,6 +76,13 @@ const Container = styled.div`
   background-color: ${(props) => props.theme.color4};
   border-radius: 10px;
   margin-top: 20px;
+ 
+
+  @media (max-width: 760px) {
+    width: 95%;
+    margin: 10px auto;
+
+  }
 
   .category {
     width: 85px;
@@ -103,8 +114,15 @@ const Container = styled.div`
       width: 200px;
       height: 100%;
       object-fit: cover;
-      object-position: bottom;
+      object-position: center;
       border-radius: 8px;
+
+      
+  @media (max-width: 760px) {
+    width: 95%;
+    margin: 0 auto;
+
+  }
     }
   }
 

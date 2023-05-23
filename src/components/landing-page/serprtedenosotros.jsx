@@ -32,12 +32,11 @@ export function Partedenosotros() {
 }
 const Container_Promocion = styled.div`
   width: 100%;
-  height: 300px;
   background-color: ${(props) => props.theme.color3};
   display: flex;
   margin-top: 40px;
-
   position: relative;
+  padding: 40px 0;
 
   .viejito {
     position: absolute;
@@ -46,6 +45,10 @@ const Container_Promocion = styled.div`
     width: 400px;
     height: auto;
     object-fit: cover;
+
+    @media (max-width: 760px) {
+      display: none;
+    }
   }
 
   .content {
@@ -53,21 +56,9 @@ const Container_Promocion = styled.div`
     margin: auto 0;
     margin-left: 200px;
 
-    .inputs {
-      border: 1px solid rgb(202, 202, 202);
-      padding: 0 8px;
-      height: 45px;
-      border-radius: 8px;
-      width: 50%;
-      font-size: 0.7em;
-      
-      background-color: white;
-      color: #4e4e4e;
-
-      &:focus {
-        border: none;
-        outline: 1px solid rgb(179, 186, 255);
-      }
+    @media (max-width: 760px) {
+      width: 95%;
+      margin: 0 auto;
     }
 
     .cursiva {
@@ -75,11 +66,18 @@ const Container_Promocion = styled.div`
       font-size: 23px;
       margin-bottom: 10px;
       color: ${(props) => props.theme.color5};
+
+      @media (max-width: 760px) {
+        color: ${(props) => props.theme.color2};
+      }
     }
 
     .big-text {
       font-size: 45px;
       color: ${(props) => props.theme.color1};
+      @media (max-width: 760px) {
+        font-size: 30px;
+      }
     }
     .parrafo-nosotros {
       margin-top: 10px;
@@ -94,7 +92,28 @@ const Container_Promocion = styled.div`
       display: flex;
       justify-content: space-between;
       align-items: center;
-     
+
+      @media (max-width: 760px) {
+        width: 100%;
+      }
+      .inputs {
+        border: 1px solid rgb(202, 202, 202);
+        padding: 0 8px;
+        height: 45px;
+        border-radius: 8px;
+        width: 50%;
+        font-size: 0.7em;
+        background-color: white;
+        color: #4e4e4e;
+        @media (max-width: 760px) {
+          width: 70%;
+        }
+
+        &:focus {
+          border: none;
+          outline: 1px solid rgb(179, 186, 255);
+        }
+      }
     }
   }
 `;

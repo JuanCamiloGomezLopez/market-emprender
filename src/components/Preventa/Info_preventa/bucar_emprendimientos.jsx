@@ -39,6 +39,7 @@ const Container_buscar_preventa = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 20px;
+ 
 
   .input-search {
     width: 50%;

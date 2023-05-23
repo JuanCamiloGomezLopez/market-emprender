@@ -24,6 +24,10 @@ export function Portada() {
 
       <div className="imagen_container">
         <img className="image_car" src={image5} />
+
+        <Link className="container_boton1" to="/preventa">
+          <Button buttonType="amarillo">VER PREVENTA</Button>
+        </Link>
       </div>
     </Container>
   );
@@ -36,27 +40,59 @@ const Container = styled.div`
   align-items: center;
   padding: 0 150px;
 
+  @media (max-width: 760px) {
+    flex-direction: column;
+    width: 95%;
+    padding: 80px 0;
+    margin: 0 auto;
+    height: auto;
+   
+  }
+
   .big-text {
     font-size: 50px;
+
+    @media (max-width: 760px) {
+      font-size: 30px;
+    }
     span {
       font-size: 60px;
       color: ${(props) => props.theme.color3};
+      @media (max-width: 760px) {
+        font-size: 45px;
+      }
     }
-  }
-  .parrafo-landing-page {
-    font-size: 12px;
-    line-height: 20px;
-    margin-bottom: 20px;
   }
 
   .content {
     width: 40%;
+
+    @media (max-width: 760px) {
+      width: 95%;
+      margin: 0 auto;
+      margin-top: 20px;
+    }
     .cursiva {
       font-family: "Dancing Script", cursive;
       font-size: 23px;
       margin-bottom: 10px;
       font-weight: 600;
       color: ${(props) => props.theme.color2};
+    }
+    .parrafo-landing-page {
+      font-size: 12px;
+      line-height: 20px;
+      margin-bottom: 20px;
+      @media (max-width: 760px) {
+        margin-bottom: 5px;
+        margin-top: 10px;
+      }
+    }
+
+    .container_boton {
+      @media (max-width: 760px) {
+        display: none;
+      }
     }
   }
   .imagen_container {
@@ -65,9 +101,26 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
 
+    @media (max-width: 760px) {
+      width: 100%;
+      margin: 0 auto;
+      flex-direction: column;
+    }
+
+    .container_boton1 {
+      display: none;
+      @media (max-width: 760px) {
+        display: block;
+      }
+    }
+
     .image_car {
       width: 600px;
       border-radius: 10px;
+
+      @media (max-width: 760px) {
+        width: 400px;
+      }
     }
   }
 `;

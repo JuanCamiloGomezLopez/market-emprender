@@ -64,8 +64,7 @@ const Container_Promocion = styled.div`
     @media (max-width: 760px) {
       width: 100%;
       margin-left: 20px;
-      margin-right: 20px;
-   
+      margin-right: 20px;   
     }
 
     p {

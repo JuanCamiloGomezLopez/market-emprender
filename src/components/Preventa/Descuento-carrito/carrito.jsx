@@ -36,11 +36,12 @@ const Container_carrito = styled.div`
   width: 100%;
   padding: 0 0 10px 0;
   border-radius: 8px;
-  background-color: white;
+  background-color: #f1f1f1;
   height: 690px;
   position: relative;
 
   @media (max-width: 760px) {
+   
     display: none;
   }
 

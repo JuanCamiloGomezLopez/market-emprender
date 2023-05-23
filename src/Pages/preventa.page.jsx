@@ -9,7 +9,10 @@ import { useDispatch } from "react-redux";
 import { setPreventa } from "../store/Preventa/preventa.reducer";
 import { setEmprenderlist } from "../store/emprendimientos-list/list.reducer";
 import { useEffect } from "react";
-import { getCategoriesAndDocuments, getlistemprendedoresAndDocuments } from "../utils/firebase.utils";
+import {
+  getCategoriesAndDocuments,
+  getlistemprendedoresAndDocuments,
+} from "../utils/firebase.utils";
 import { PromocionPreventa } from "../components/Preventa/promocion-preventa";
 
 export function PreventaPage() {
@@ -36,11 +39,7 @@ export function PreventaPage() {
       <Navbar_Preventa />
       <PromocionPreventa />
       <div className="subcontainer-preventa">
-        <div className="container-left">
-          <div className="center-container">
-            <Programacion />
-          </div>
-        </div>
+        <Programacion />
         <div className="container-right">
           <Carrito />
           <Historias />
@@ -59,6 +58,7 @@ const Container_Preventa = styled.div`
   width: 100%;
   height: 100%;
   overflow-x: hidden;
+
   .subcontainer-preventa {
     width: 100%;
     display: flex;
@@ -66,28 +66,15 @@ const Container_Preventa = styled.div`
     @media (max-width: 760px) {
       flex-direction: column;
     }
-    .container-left {
-      width: 80%;
-      height: 100%;
-      @media (max-width: 760px) {
-        width: 100%;
-      }
-      .center-container {
-        width: 90%;
-        margin: 0 auto;
-      }
-    }
+
     .container-right {
-      width: 20%;
-      height: calc(100% + 80px);
-      background-color: #eeeeee;
+      width: 20%;    
       padding: 20px;
 
       @media (max-width: 760px) {
         width: 100%;
-        margin-top: 250px;
+      
         background-color: ${(props) => props.theme.color3};
-       
       }
     }
   }
@@ -97,9 +84,9 @@ const Container_Preventa = styled.div`
     padding: 30px 40px; 
 
     @media (max-width: 760px) {
-        padding: 0 10px;
-        height: 640px;
-      }
+      padding: 0 10px;
+      height: 640px;
+    }
   }
 
   .footer {

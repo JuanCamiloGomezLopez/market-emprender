@@ -73,12 +73,14 @@ export function Programacion() {
   );
 }
 const Container_programacion_preventa = styled.div`
-  width: 100%;
+  width: 80%;
   height: 100%;
-  padding: 20px;
+  padding: 40px 80px 10px 80px;
+  margin: 0 auto;
 
   @media (max-width: 760px) {
-    padding: 0px;
+    padding: 20px;
+    width: 100%;
   }
 
   .title-tempor {
@@ -88,7 +90,7 @@ const Container_programacion_preventa = styled.div`
 
     .text-h2 {
       @media (max-width: 760px) {
-        font-size: 15px;
+        font-size: 18px;
         margin-bottom: 20px;
         margin-top: 30px;
       }
@@ -115,15 +117,15 @@ const Container_programacion_preventa = styled.div`
     align-items: center;
     justify-content: center;
     margin: 40px auto;
-    
+
     @media (max-width: 760px) {
       flex-direction: column;
     }
-    .title{
+    .title {
       @media (max-width: 760px) {
-      margin-top: 10px;
-      font-size: 18px;
-    }
+        margin-top: 10px;
+        font-size: 18px;
+      }
     }
 
     .img-title {
@@ -132,8 +134,8 @@ const Container_programacion_preventa = styled.div`
       object-fit: cover;
       margin-right: 10px;
       @media (max-width: 760px) {
-      margin-right: 0;
-    }
+        margin-right: 0;
+      }
     }
   }
   .text-search {

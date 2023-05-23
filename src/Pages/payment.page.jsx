@@ -68,16 +68,32 @@ const Container = styled.div`
     width: 100%;
     display: flex;
 
+    @media (max-width: 760px) {
+      flex-direction: column;
+    }
+
     .informacion-general {
       width: 70%;
       padding: 20px 40px 20px 100px;
 
+      @media (max-width: 760px) {
+      width: 95%;
+      padding: 0;
+      margin: 0 auto;
+    }
+
       .title-datos-personales {
         margin-bottom: 5px;
+        @media (max-width: 760px) {
+      font-size: 15px;
+    }
       }
       .title-datos-envio {
         margin-top: 30px;
         margin-bottom: 5px;
+        @media (max-width: 760px) {
+      font-size: 15px;
+    }
       }
 
       .informacion-envio {
@@ -91,6 +107,9 @@ const Container = styled.div`
 
     .title-tarjeta{
       margin-top: 30px;
+      @media (max-width: 760px) {
+      font-size: 15px;
+    }
     }
   }
 `;

@@ -50,18 +50,20 @@ export function Diaemprendimiento({ searchemp, listadeemprendedores }) {
 }
 const Container = styled.div`
   width: 100%;
-  height: 280px;
+ 
   display: flex;
   align-content: center;
-  justify-content: space-between;
+  justify-content: center;
+  
 
   @media (max-width: 760px) {
     flex-direction: column;
+
   }
 
   .imagen {
     width: 50%;
-    background-color: #e9e9e9;
+    height: 100%;
     border-radius: 8px;
 
     @media (max-width: 760px) {
@@ -83,6 +85,7 @@ const Container = styled.div`
 
     @media (max-width: 760px) {
       width: 100%;
+      height: auto;
       padding: 0;
       margin-top: 20px;
     }

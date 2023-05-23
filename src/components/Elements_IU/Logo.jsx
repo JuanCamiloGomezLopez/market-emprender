@@ -19,15 +19,14 @@ const Container_logo = styled.div`
   width: 145px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; 
   
 
   .img-logo {
     width: 35px;
     height: auto;
   }
-  .content_logo {
-    
+  .content_logo {   
 
     p {
       font-weight: 300;

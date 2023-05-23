@@ -64,9 +64,16 @@ const Container_preventa = styled.div`
   align-items: center;
   padding: 0 100px;
 
-  .contenido-preventa-section {
+  @media (max-width: 760px) {
+    flex-direction: column;
+    padding: 0;
+  }
 
+  .contenido-preventa-section {
     width: 45%;
+    @media (max-width: 760px) {
+      width: 100%;
+    }
 
     .titulo-preventa-section {
     }
@@ -120,6 +127,9 @@ const Container_preventa = styled.div`
   .imagen_container_preventa {
     width: 50%;
     border-radius: 10px;
+    @media (max-width: 760px) {
+      width: 100%;
+    }
 
     .image_car_preventa {
       width: 100%;

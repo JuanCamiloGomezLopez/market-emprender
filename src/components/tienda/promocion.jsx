@@ -11,7 +11,7 @@ export function Promocion() {
 
         <div className="content">
           <h3 className="cursiva">Hey Colombianos</h3>
-          <h1 className="big-text">Que esperas para unirte a Emprender?</h1>
+          <h1 className="big-text">Que esperas para unirte a  Market Up?</h1>
           <p>
             Recibiras toda la asesoria para unirte a la unica comunidad de
             emprendedores del pais
@@ -36,18 +36,33 @@ const Container_Promocion = styled.div`
     display: flex;
     margin-top: 40px;
     justify-content: center;
+    
+    @media (max-width: 760px) {
+     height: 250px;
+    }
 
     .mujer {
       width: 50%;
       height: auto;
       object-fit: cover;
       margin-right: 120px;
+
+      @media (max-width: 760px) {
+        display: none;
+      }
     }
 
     .content {
       width: 50%;
       margin: auto 0;
       margin-left: 200px;
+    
+
+      @media (max-width: 760px) {
+      width: 100%;
+      margin-left: 20px;
+      margin-right: 20px;   
+    }
       .cursiva {
         font-family: "Dancing Script", cursive;
         font-size: 23px;
@@ -57,6 +72,9 @@ const Container_Promocion = styled.div`
 
       .big-text {
         font-size: 45px;
+        @media (max-width: 760px) {
+        font-size: 30px;
+      }
       }
 
       .container_boton {

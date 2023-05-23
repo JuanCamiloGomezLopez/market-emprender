@@ -14,7 +14,7 @@ export function Landingpage() {
     <Container_landing>
       <Navbar />
       <Portada />
-      <PreventasSection_copy />
+      {/* <PreventasSection_copy /> */}
       <PreventasSection />
       <TiendaSection />
       <Eventos />

@@ -11,6 +11,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectCarTotal } from "../../store/cart/cart.selector";
+import { FormInput } from "../Elements_IU/Form-input";
 
 export function PayTarjeta() {
   const [databackend, setDatabackend] = useState("");
@@ -59,7 +60,8 @@ export function PayTarjeta() {
       <form onSubmit={handlersubmit} className="infocard">
         <CardElement className="cardelement" />
         <div className="btn">
-          <Button buttonType="amarillo">PAGAR</Button>
+        <FormInput type="text" placeholder="Numero de cuotas" />
+        <FormInput type="text" placeholder="Nombre y apellido" />
         </div>
       </form>
     );
@@ -100,7 +102,7 @@ const Container = styled.div`
       width: 100%;
       display: flex;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: space-between;
     }
   }
 `;

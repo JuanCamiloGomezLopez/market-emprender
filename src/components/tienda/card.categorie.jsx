@@ -13,6 +13,7 @@ export function CardCategorie({text, Icon, setCategorie, categorie}) {
 }
 const Container = styled.div`
   text-align: center;
+ 
 
   .category {
     width: 100px;
@@ -23,6 +24,11 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     margin-bottom: 10px;
+
+    @media (max-width: 760px) {
+      width: 70px;
+      height: 70px;
+    }
 
     .icon {
       width: 40px;
@@ -40,6 +46,12 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     margin-bottom: 10px;
+
+    
+    @media (max-width: 760px) {
+      width: 70px;
+      height: 70px;
+    }
 
     .icon {
       width: 40px;

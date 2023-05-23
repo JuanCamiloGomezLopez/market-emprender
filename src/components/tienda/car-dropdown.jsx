@@ -1,20 +1,14 @@
 import styled from "styled-components";
 import { Button } from "../Elements_IU/Buttons";
-
 import { Link } from "react-router-dom";
-
 import { selectcartItems } from "../../store/cart/cart.selector";
-
 import { setCaropen } from "../../store/cart/cart.reducer";
-
 import { useDispatch, useSelector } from "react-redux";
 import { CarItemDropdown } from "./cart.item.dropdown";
 
 export function CarDropdown() {
   const caritems = useSelector(selectcartItems);
-
   const dispatch = useDispatch();
-
   const handler = () => dispatch(setCaropen(false));
 
   return (
@@ -23,9 +17,7 @@ export function CarDropdown() {
         {caritems.map((item) => (
           <CarItemDropdown key={item.id} cartitem={item} />
         ))}
-      </div>
-
-        
+      </div>        
       <Link className="btn-checkout" to="/checkout">
         <Button onClick={handler}>TO CHECKOUT</Button>
       </Link>

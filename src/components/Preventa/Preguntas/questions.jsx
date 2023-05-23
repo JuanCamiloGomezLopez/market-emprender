@@ -60,7 +60,7 @@ const ContainerQuestions = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 80px;
+  padding: 0 120px;
 
   @media (max-width: 760px) {
     padding: 0;

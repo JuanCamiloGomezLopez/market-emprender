@@ -25,10 +25,8 @@ const Container_Emprendimiento_preventa = styled.div`
   @media (max-width: 760px) {
     width: 100%;
     justify-content: center;
-    align-items: center;
-  
-    margin: 0 auto;
-   
+    align-items: center;  
+    margin: 0 auto;   
   }
   .containercajas {
     width: 100%;
@@ -39,13 +37,10 @@ const Container_Emprendimiento_preventa = styled.div`
     align-items: stretch;
     position: relative;
 
-    @media (max-width: 760px) {
-    
+    @media (max-width: 760px) {    
       width: 100px;
-      grid-template-columns: repeat(2, 1fr);
-   
-      justify-content: center;
-    
+      grid-template-columns: repeat(2, 1fr);   
+      justify-content: center;    
       align-items: stretch;
       
     }

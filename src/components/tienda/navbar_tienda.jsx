@@ -15,12 +15,11 @@ import { sigOutUser } from "../../utils/firebase.utils";
 
 export function Navbar_Tienda() {
   const opencar = useSelector(selectIsCarOpen);
-
   const currentuser = useSelector((state) => state.user.currentUser);
-
   const isopenmodalsign = useSelector(selectIsSiginOpen);
   const [openoutuser, setOpenoutUser] = useState(false);
   const dispatch = useDispatch();
+  const [clicke, setClick] = useState(false);
 
   const openuserout = () => {
     setOpenoutUser(!openoutuser);
@@ -32,36 +31,36 @@ export function Navbar_Tienda() {
   };
 
   return (
-    <Container_navbar>
-      <Logo />
+    <Container_navbar clicke={clicke}>
+      <div className="container-logo-tienda">
+        <Logo />
+      </div>
 
       {currentuser ? (
-        <div className="items-container">
-           <Link to="/profile">
+        <div className="items-container" clicke={clicke}>
+          <Link to="/profile">
             <span className="navbar-items"> Mis Favoritos</span>
           </Link>
           <Link to="/profile">
-            <span className="navbar-items">  Historial de compras</span>
-          </Link> 
+            <span className="navbar-items"> Historial de compras</span>
+          </Link>
 
           <Link to="/preventa">
             <span className="navbar-items"> Preventas</span>
           </Link>
         </div>
       ) : (
-        <div className="items-container">
+        <div className="items-container" clicke={clicke}>
           <span
             onClick={() => dispatch(setSigninOpen(!isopenmodalsign))}
             className="navbar-items"
           >
-        
             Mis Favoritos
           </span>
           <span
             onClick={() => dispatch(setSigninOpen(!isopenmodalsign))}
             className="navbar-items"
           >
-       
             Historial de compras
           </span>
           <Link to="/preventa">
@@ -78,7 +77,7 @@ export function Navbar_Tienda() {
                 {currentuser.email.toUpperCase().substring(0, 1)}
               </h5>
             </div>
-            <h5 className="text-1">{currentuser.email}</h5>
+
             <AiOutlineDown className="icon" onClick={openuserout} />
             {openoutuser ? (
               <div onClick={seignOuthandler} className="outUser">
@@ -86,7 +85,6 @@ export function Navbar_Tienda() {
               </div>
             ) : null}
             {opencar ? <CarDropdown /> : null}
-            <CartIcon />
           </div>
         ) : (
           <div className="sign">
@@ -97,11 +95,17 @@ export function Navbar_Tienda() {
             >
               SIGN IN
             </a>
-            {opencar ? <CarDropdown /> : null}
-            <CartIcon />
           </div>
         )}
       </div>
+      <div className="car-icon">
+        {opencar ? <CarDropdown /> : null}
+        <CartIcon />
+      </div>
+      <HamburgerMenu
+        clicke={clicke}
+        onClick={() => setClick(!clicke)}
+      ></HamburgerMenu>
       <Authentication />
     </Container_navbar>
   );
@@ -117,23 +121,58 @@ const Container_navbar = styled.div`
   font-weight: 700;
   padding: 0 40px;
 
-  .navbar-items {
-    padding: 0 40px;
-    cursor: pointer;
+  @media (max-width: 760px) {
+    padding: 0 20px;
   }
+
+  .container-logo-tienda {
+    z-index: 20;
+  }
+
+  .items-container {
+    display: flex;
+
+    @media (max-width: 760px) {
+      position: fixed;
+      top: 80px;
+      right: 10px;
+      height: 350px;
+      width: 200px;
+      z-index: 10;
+      border-radius: 10px;
+      background: #e0e0e0c1;
+      backdrop-filter: blur(4px);
+      transform: ${(props) =>
+        props.clicke ? "translateY(0)" : "translateY(-1000%)"};
+      transition: all 0.3s ease;
+      flex-direction: column;
+      justify-content: center;
+      touch-action: none;
+      text-align: center;
+    }
+    .navbar-items {
+      padding: 0 40px;
+      cursor: pointer;
+
+      @media (max-width: 760px) {
+        font-size: 15px;
+        line-height: 50px;
+        padding: 0;
+      }
+    }
+  }
+
   .usuario {
     display: flex;
     align-items: center;
     justify-content: left;
     width: 250px;
-    
 
     .sign {
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
- 
 
       .fotouser {
         width: 30px;
@@ -150,6 +189,10 @@ const Container_navbar = styled.div`
       align-items: center;
       justify-content: center;
       position: relative;
+
+      @media (max-width: 760px) {
+        margin-left: 60px;
+      }
 
       .circulo {
         width: 30px;
@@ -174,12 +217,16 @@ const Container_navbar = styled.div`
       }
       .icon {
         cursor: pointer;
+        margin-left: 10px;
+        @media (max-width: 760px) {
+          margin-left: 10px;
+        }
       }
 
       .outUser {
         position: absolute;
         top: 35px;
-        right: 47px;
+        right: 0;
         width: 90px;
         height: 30px;
         border: 1px solid rgb(175, 175, 175);
@@ -188,6 +235,11 @@ const Container_navbar = styled.div`
         justify-content: center;
         align-items: center;
         cursor: pointer;
+        @media (max-width: 760px) {
+        margin-left: 60px;
+       
+      }
+        
         &:hover {
           border: 1px solid ${(props) => props.theme.color2};
         }
@@ -198,8 +250,56 @@ const Container_navbar = styled.div`
           &:hover {
             color: ${(props) => props.theme.color2};
           }
+       
         }
       }
     }
+  }
+  .car-icon {
+    display: none;
+    margin-right: 40px;
+
+    @media (max-width: 760px) {
+      display: flex;
+    }
+  }
+`;
+
+const HamburgerMenu = styled.span`
+  width: 1.5rem;
+  height: 2px;
+  background: ${(props) => props.theme.text};
+  position: absolute;
+  top: 2.5rem;
+  right: 10px;
+  transform: ${(props) =>
+    props.clicke
+      ? "translateX(-50%) rotate(45deg)"
+      : "translateX(-50%) rotate(0)"};
+  display: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 20;
+
+  @media (max-width: 760px) {
+    display: flex;
+  }
+  &::after,
+  &::before {
+    content: " ";
+    width: 1.5rem;
+    height: 2px;
+    background: ${(props) => props.theme.text};
+    position: absolute;
+    transition: all 0.3s ease;
+  }
+  &::after {
+    top: ${(props) => (props.clicke ? "0" : "0.5rem")};
+    transform: ${(props) => (props.clicke ? "rotate(90deg)" : "rotate(0)")};
+  }
+  &::before {
+    bottom: ${(props) => (props.clicke ? "0" : "0.5rem")};
   }
 `;

@@ -10,13 +10,14 @@ import { Authentication } from "../../modales/modal-authentication";
 import { selectIsSiginOpen } from "../../../store/user/user.selector";
 import { setSigninOpen } from "../../../store/user/user.reduce";
 import { CartIcon } from "../../tienda/car-icon.component";
+import { selectIsCarOpen } from "../../../store/cart/cart.selector";
+import { CarDropdown } from "../../tienda/car-dropdown";
 
 export function Navbar_Preventa() {
   const currentuser = useSelector((state) => state.user.currentUser);
-
   const [clicke, setClick] = useState(false);
-
   const isopenmodalsign = useSelector(selectIsSiginOpen);
+  const opencar = useSelector(selectIsCarOpen);
   const [openoutuser, setOpenoutUser] = useState(false);
   const dispatch = useDispatch();
 
@@ -96,6 +97,7 @@ export function Navbar_Preventa() {
 
       </div>
           <div className="car-icon">
+          {opencar ? <CarDropdown /> : null}
              <CartIcon />
           </div>
      
@@ -135,26 +137,31 @@ const Container_navbar = styled.div`
 
     @media (max-width: 760px) {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 400px;
-      width: 100%;
+      top: 80px;
+      right: 10px;
+      height: 350px;
+      width: 200px;
       z-index: 10;
-      background-color: rgba(255, 255, 255, 0.35);
+      border-radius: 10px;
+      background: #e0e0e0c1;
       backdrop-filter: blur(4px);
       transform: ${(props) =>
-        props.clicke ? "translateY(0)" : "translateY(-1000%)"};
+      props.clicke ? "translateY(0)" : "translateY(-1000%)"};
       transition: all 0.3s ease;
       flex-direction: column;
       justify-content: center;
       touch-action: none;
-      border-radius: 0 0 10px 10px;
     }
 
     .navbar-items {
       padding: 0 40px;
       cursor: pointer;
+      @media (max-width: 760px) {
+        font-size: 15px;
+        line-height: 50px;
+        padding: 0;
+      
+      }
     }
   }
 

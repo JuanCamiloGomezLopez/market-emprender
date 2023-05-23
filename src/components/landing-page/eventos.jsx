@@ -41,13 +41,15 @@ export function Eventos() {
 
       <div className="container-imagenes">
         <img className="img-event" src={imagen1}></img>
+        <Link className="btn-shop-section1" to="/preventa">
+          <Button buttonType="amarillo">VER PROGRAMACIÓN</Button>
+        </Link>
       </div>
     </Container>
   );
 }
 const Container = styled.div`
-  width: 100%;
-  height: 900px;
+  width: 100%;  
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -55,11 +57,24 @@ const Container = styled.div`
   position: relative;
   overflow-x: hidden;
 
+  @media (max-width: 760px) {
+    flex-direction: column;
+    padding: 0;
+    margin-top: 50px;
+  }
+
   .container-flags {
     position: absolute;
     top: 160px;
     left: 20px;
     width: 500px;
+
+    @media (max-width: 760px) {
+      position: relative;
+      width: 420px;
+      top: 0;
+      margin-bottom: 10px;
+    }
 
     .img-flag {
       width: 800px;
@@ -69,12 +84,32 @@ const Container = styled.div`
   .content {
     width: 50%;
     margin-left: 80px;
+    @media (max-width: 760px) {
+      width: 95%;
+      margin: 0 auto;
+    }
+
+    .titulo-preventa-section {
+      @media (max-width: 760px) {
+        font-size: 25px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 760px) {
+      width: 100%;
+    }
 
     .market {
       font-size: 40px;
       color: ${(props) => props.theme.color3};
       text-align: center;
       font-weight: 800;
+      @media (max-width: 760px) {
+        font-size: 30px;
+        display: flex;
+        justify-content: center;
+      }
     }
 
     .text-cursivo {
@@ -83,28 +118,52 @@ const Container = styled.div`
       margin-bottom: 10px;
       font-weight: 600;
       color: ${(props) => props.theme.color2};
+
+      @media (max-width: 760px) {
+        text-align: center;
+        margin-top: 10px;
+      }
     }
 
     .container-list {
       margin-top: 30px;
+
+      @media (max-width: 760px) {
+        width: 85%;
+        margin: 0 auto;
+        margin-top: 20px;
+      }
 
       .subcontainer-item {
         display: flex;
         align-items: center;
         margin-bottom: 20px;
         text-align: left;
+        h3 {
+          @media (max-width: 760px) {
+            font-size: 12px;
+          }
+        }
 
         .iconos-shop-section {
           width: 20px;
           height: 20px;
           color: ${(props) => props.theme.color2};
           margin-right: 10px;
+          @media (max-width: 760px) {
+            color: ${(props) => props.theme.color3};
+            idth: 15px;
+            height: 15px;
+          }
         }
       }
       .btn-shop-section {
         display: flex;
         justify-content: flex-start;
         margin-top: 30px;
+        @media (max-width: 760px) {
+          display: none;
+        }
       }
     }
   }
@@ -114,6 +173,18 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    @media (max-width: 760px) {
+      flex-direction: column;
+    }
+
+    .btn-shop-section1 {
+      display: none;
+      justify-content: flex-start;
+      margin-top: 30px;
+      @media (max-width: 760px) {
+        display: flex;     
+      }
+    }
 
     .img-event {
       width: 100%;
