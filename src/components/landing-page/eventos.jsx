@@ -33,15 +33,14 @@ export function Eventos() {
             <BsCheckCircleFill className="iconos-shop-section" />
             <h3>Productos de emprendedores 100% Colombianos</h3>
           </div>
-          <Link className="btn-shop-section" to="/preventa">
+          <Link className="btn-shop-section" to="/events">
             <Button buttonType="amarillo">CONOCE NUESTRA PROGRAMACIÓN</Button>
           </Link>
         </div>
       </div>
-
       <div className="container-imagenes">
         <img className="img-event" src={imagen1}></img>
-        <Link className="btn-shop-section1" to="/preventa">
+        <Link className="btn-shop-section1" to="/events">
           <Button buttonType="amarillo">VER PROGRAMACIÓN</Button>
         </Link>
       </div>
@@ -64,10 +63,7 @@ const Container = styled.div`
   }
 
   .container-flags {
-    position: absolute;
-    top: 160px;
-    left: 20px;
-    width: 500px;
+    display: none;
 
     @media (max-width: 760px) {
       position: relative;

@@ -56,7 +56,6 @@ export function Questions() {
 }
 const ContainerQuestions = styled.div`
   width: 100%;
-  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,6 +63,7 @@ const ContainerQuestions = styled.div`
 
   @media (max-width: 760px) {
     padding: 0;
+    margin-bottom: 40px;
   }
 
   .subcontainerquestion {
@@ -74,6 +74,10 @@ const ContainerQuestions = styled.div`
       text-align: center;
       padding: 10px 0;
       margin-bottom: 20px;
+
+      @media (max-width: 760px) {
+        font-size: 20px;
+      }
     }
 
     .boxes-questions {
@@ -84,16 +88,16 @@ const ContainerQuestions = styled.div`
 
       @media (max-width: 760px) {
         flex-direction: column;
-       
       }
 
       .box-question {
         width: 50%;
         height: 90%;
         padding: 0 20px;
+
         @media (max-width: 760px) {
-        width: 100%;
-      }
+          width: 100%;
+        }
       }
     }
   }

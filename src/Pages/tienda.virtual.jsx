@@ -10,7 +10,7 @@ import { getlisproducttiendaAndDocuments } from "../utils/firebase.utils";
 import { setTienda } from "../store/productos.tienda/tienda.reducer";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Navbar_Tienda } from "../components/tienda/navbar_tienda";
+import { NavbarComponent } from "../components/Elements_IU/navbarcomponent/Navbar.tipico";
 
 export function Tienda() {
   const dispatch = useDispatch();
@@ -37,7 +37,11 @@ export function Tienda() {
 
   return (
     <Container_Blog>
-      <Navbar_Tienda />
+
+
+     <div className="navbar-container">
+        <NavbarComponent type="tienda"/>
+      </div>
       <div className="portada-preventa">
         <img src="https://i.ibb.co/r6dCVHK/arte.jpg" />
       </div>
@@ -72,6 +76,11 @@ export function Tienda() {
 const Container_Blog = styled.div`
   width: 100%;
   height: 100%;
+
+  .navbar-container {
+    width: 100%;
+    height: 80px;
+  }
 
   .title-list {
     text-align: center;

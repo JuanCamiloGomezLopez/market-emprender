@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Programacion } from "../components/Preventa/Info_preventa/Programacion";
-import { Navbar_Preventa } from "../components/Preventa/Navbar_preventa/navbar_preventa";
 import { Carrito } from "../components/Preventa/Descuento-carrito/carrito";
 import { Historias } from "../components/Preventa/Descuento-carrito/historias";
 import { Opiniones } from "../components/Preventa/Opiniones-tienda/opiniones";
@@ -13,6 +12,7 @@ import { setEmprenderlist } from "../store/emprendimientos-list/list.reducer";
 import { useEffect } from "react";
 import { getCategoriesAndDocuments, getlistemprendedoresAndDocuments } from "../utils/firebase.utils";
 import { PromocionPreventa } from "../components/Preventa/promocion-preventa";
+import { NavbarComponent } from "../components/Elements_IU/navbarcomponent/Navbar.tipico";
 
 export function PreventaPage_1() {
 
@@ -36,7 +36,7 @@ export function PreventaPage_1() {
 
   return (
     <Container_Preventa>    
-        <Navbar_Preventa />
+        <NavbarComponent />
         <PromocionPreventa />     
 
       <div className="subcontainer">       

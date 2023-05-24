@@ -4,11 +4,10 @@ export function Location() {
   return (
     <ContainerLocation>
       <div className="subcontainerlocation">
-        <h1 className="title-location">ENCUENTRA NUESTRA FERIA PARA TI</h1>
+        <h1 className="title-location">Encuentra nuestra feria Market Up</h1>
         <div className="subcontentlocation">
           <div className="content-location">
             <div className="container-content">
-  
               <div className="texto-line">
                 <h2 className="texth2">
                   <strong>Ubicación</strong>
@@ -46,29 +45,40 @@ export function Location() {
 }
 const ContainerLocation = styled.div`
   width: 100%;
-  height: 400px;
 
   .subcontainerlocation {
-    height: 100%;
     width: 100%;
     position: relative;
+
+    @media (max-width: 760px) {
+    }
 
     .title-location {
       text-align: center;
       color: ${(props) => props.theme.color1};
       padding: 40px 0;
+
+      @media (max-width: 760px) {
+        font-size: 30px;
+        padding: 40px 0 20px 0;
+      }
     }
 
     .subcontentlocation {
       width: 100%;
-      height: 100%;
+      height: 350px;
       display: flex;
       align-items: center;
-      position: absolute;
+  
+
+      @media (max-width: 760px) {
+        flex-direction: column-reverse;
+       
+        height: auto;
+      }
 
       .content-location {
         width: 40%;
-        height: 80%;
         background-color: #242424da;
         display: flex;
         justify-content: center;
@@ -77,23 +87,48 @@ const ContainerLocation = styled.div`
         margin-left: 40px;
         border-radius: 20px;
         padding: 30px;
+        position: absolute;
+
+        @media (max-width: 760px) {
+          width: 90%;
+          margin: 0 auto;
+          margin-top: 20px;
+          padding: 15px;
+          border-radius: 5px;
+          position: relative;
+        }
 
         .container-content {
           width: 100%;
           height: 100%;
           border: 1px solid ${(props) => props.theme.color3};
           border-radius: 10px;
-          padding:  40px;
+          padding: 0 40px;
+          line-height: 40px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          @media (max-width: 760px) {
+            padding: 0 10px;
+            border-radius: 5px;
+            padding: 0 10px;
+          }
 
           .texto-line {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 25px;
 
             .texth2 {
               color: white;
               font-weight: 400;
+              font-size: 15px;
+
+              @media (max-width: 760px) {
+                font-size: 13px;
+                font-weight: 300;
+              }
             }
           }
         }
@@ -102,10 +137,14 @@ const ContainerLocation = styled.div`
       .container-map {
         width: 100%;
         height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
+        position: relative;
+       
         z-index: 0;
+
+        @media (max-width: 760px) {
+          position: relative;
+          width: 100%;
+        }
 
         .mapa {
           width: 100%;

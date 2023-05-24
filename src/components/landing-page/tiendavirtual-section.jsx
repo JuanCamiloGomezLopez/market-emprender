@@ -9,7 +9,7 @@ export function TiendaSection() {
     <Container>
       <div className="container-image-shop">
         <img className="img-shop" src={imagen_shop}></img>
-        <Link className="btn-shop-section1" to="/preventa">
+        <Link className="btn-shop-section1" to="/tienda">
           <Button buttonType="default">IR A TIENDA</Button>
         </Link>
       </div>
@@ -36,7 +36,7 @@ export function TiendaSection() {
             <BsCheckCircleFill className="iconos-shop-section" />
             <h3>Productos de emprendedores 100% Colombianos</h3>
           </div>
-          <Link className="btn-shop-section" to="/preventa">
+          <Link className="btn-shop-section" to="/tienda">
             <Button buttonType="default">IR A TIENDA</Button>
           </Link>
         </div>

@@ -4,10 +4,8 @@ export function TituloEmprendedor({ infoemprendimiento }) {
   return (
     <Container_titulo_emprendedor>
       {infoemprendimiento.map((item) => (
-
         <Fragment key={item.id}>
-
-             <div className="description-container">
+          <div className="description-container">
             <h1 className="title-description">{item.emprendimiento}</h1>
             <h6 className="parrafo">{item.descripccion}</h6>
           </div>
@@ -42,9 +40,6 @@ export function TituloEmprendedor({ infoemprendimiento }) {
             </div>
           </div>
         </Fragment>
-        
-
-
       ))}
     </Container_titulo_emprendedor>
   );
@@ -64,25 +59,54 @@ const Container_titulo_emprendedor = styled.div`
   justify-content: space-between;
   padding: 0 80px;
 
+  @media (max-width: 760px) {
+    width: 90%;
+    padding: 0;
+    height: 180px;
+    position: relative;
+    top: -100px;
+    left: 0;
+    margin: 0 auto;  
+  }
+
   .description-container {
     width: 50%;
+    
 
     .title-description {
       padding: 10px 0;
+      @media (max-width: 760px) {
+        font-size: 20px;
+        width: 40%;
+        padding-left: 10px;
+      }
     }
     .parrafo {
       line-height: 15px;
+      @media (max-width: 760px) {
+        padding-left: 10px;
+      }
     }
   }
   .content-container {
     width: 40%;
     padding: 0 40px;
+ 
+
+    @media (max-width: 760px) {
+      padding: 0 10px;
+      width: 60%;
+    }
 
     .texthorizontal {
       display: flex;
       align-items: center;
       justify-content: space-between;
       line-height: 35px;
+
+      h5 {
+        font-size: 12px;
+      }
     }
     .linea {
       width: 100%;

@@ -2,14 +2,14 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { CardFavorites } from "./card.favorites";
 import { selectIsFavorite } from "../../store/favorites/favorite.selector";
-import { Navbar } from "../navbar/Navbar";
+import { NavbarComponent } from "../Elements_IU/navbarcomponent/Navbar.tipico";
 export function PageUser() { 
   const productfavorite = useSelector(selectIsFavorite);
   const arrayprodcut = Object.values(productfavorite);
 
   return (
     <Container>
-      <Navbar />
+      <NavbarComponent />
       <div className="subcontainer">
         <div className="registro-compras-container">
           <h2 className="titulo1">Mi Historial de compras</h2>

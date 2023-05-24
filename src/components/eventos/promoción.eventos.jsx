@@ -10,7 +10,9 @@ export function PromocionEventos() {
     <Container_Promocion>
       <div className="content">
         <h3 className="cursiva">Hey Emprendedores</h3>
-        <h1 className="big-text">QUIERES HACER PARTE DE NUESTRA COMUNIDAD EMPRENDEDORA?</h1>
+        <h1 className="big-text">
+          QUIERES HACER PARTE DE NUESTRA COMUNIDAD EMPRENDEDORA?
+        </h1>
         <p className="parrafo-nosotros">
           Sé parte de nosotros, y preparate para ver crecer tu negocio.
         </p>
@@ -32,12 +34,17 @@ export function PromocionEventos() {
 }
 const Container_Promocion = styled.div`
   width: 100%;
-  height: 300px;
   background-color: ${(props) => props.theme.color3};
   display: flex;
   margin: 150px 0;
-
   position: relative;
+  padding: 20px 0;
+
+  @media (max-width: 760px) {
+    margin-top: 60px;
+    padding: 40px 0;  
+    margin-bottom: 50px;
+  }
 
   .viejito {
     position: absolute;
@@ -46,12 +53,22 @@ const Container_Promocion = styled.div`
     width: 400px;
     height: auto;
     object-fit: cover;
+
+    @media (max-width: 760px) {
+      display: none;
+    }
   }
 
   .content {
     width: 60%;
     margin: auto 0;
     margin-left: 150px;
+    
+
+    @media (max-width: 760px) {
+      width: 95%;
+      margin: 0 auto;
+    }
 
     .inputs {
       border: 1px solid rgb(202, 202, 202);
@@ -60,7 +77,7 @@ const Container_Promocion = styled.div`
       border-radius: 8px;
       width: 50%;
       font-size: 0.7em;
-      
+
       background-color: white;
       color: #4e4e4e;
 
@@ -74,13 +91,16 @@ const Container_Promocion = styled.div`
       font-family: "Dancing Script", cursive;
       font-size: 23px;
       margin-bottom: 10px;
-      
+
       color: ${(props) => props.theme.color2};
     }
 
     .big-text {
       font-size: 45px;
       color: ${(props) => props.theme.color1};
+      @media (max-width: 760px) {
+        font-size: 30px;
+      }
     }
     .parrafo-nosotros {
       margin-top: 10px;
@@ -95,7 +115,11 @@ const Container_Promocion = styled.div`
       display: flex;
       justify-content: space-between;
       align-items: center;
-     
+      @media (max-width: 760px) {
+      width: 100%;
+      
+    }
+
     }
   }
 `;

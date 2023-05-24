@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { Navbar_Preventa } from "../components/Preventa/Navbar_preventa/navbar_preventa";
 import { ListProducts } from "../components/Checkout-page/lista.productos";
 import { ResumenPagos } from "../components/Checkout-page/resumen.pagos";
 import { Footer } from "../components/Preventa/footer/footer";
 import { selectcartItems } from "../store/cart/cart.selector";
 import { useSelector, useDispatch } from "react-redux";
 import { reset } from "../store/cart/cart.reducer";
+import { NavbarComponent } from "../components/Elements_IU/navbarcomponent/Navbar.tipico";
 
 export function Checkout() {
   var caritems = useSelector(selectcartItems);
@@ -16,7 +16,10 @@ export function Checkout() {
 
   return (
     <Container_Checkout>
-      <Navbar_Preventa />
+      <div className="navbar-container">
+        <NavbarComponent type="checkout"/>
+      </div>
+
       <h2 className="title-carrito"> MI CARRITO DE COMPRAS</h2>
 
       <div className="subcontainer-chekout">
@@ -46,9 +49,14 @@ const Container_Checkout = styled.div`
   width: 100%;
   height: 100%;
 
+  .navbar-container {
+    width: 100%;
+    height: 80px;
+  }
+
   .title-carrito {
     margin: 40px 0 20px 0;
-    
+
     text-align: center;
   }
 
@@ -83,7 +91,6 @@ const Container_Checkout = styled.div`
         background-color: ${(props) => props.theme.gray300};
         @media (max-width: 760px) {
           background-color: white;
-      
         }
       }
 

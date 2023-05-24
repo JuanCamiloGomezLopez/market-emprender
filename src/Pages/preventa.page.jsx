@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Programacion } from "../components/Preventa/Info_preventa/Programacion";
-import { Navbar_Preventa } from "../components/Preventa/Navbar_preventa/navbar_preventa";
 import { Carrito } from "../components/Preventa/Descuento-carrito/carrito";
 import { Historias } from "../components/Preventa/Descuento-carrito/historias";
 import { Questions } from "../components/Preventa/Preguntas/questions";
@@ -14,6 +13,7 @@ import {
   getlistemprendedoresAndDocuments,
 } from "../utils/firebase.utils";
 import { PromocionPreventa } from "../components/Preventa/promocion-preventa";
+import { NavbarComponent } from "../components/Elements_IU/navbarcomponent/Navbar.tipico";
 
 export function PreventaPage() {
   const dispatch = useDispatch();
@@ -36,8 +36,11 @@ export function PreventaPage() {
 
   return (
     <Container_Preventa>
-      <Navbar_Preventa />
+       <div className="navbar-container">
+        <NavbarComponent type="preventa"/>
+      </div>
       <PromocionPreventa />
+
       <div className="subcontainer-preventa">
         <Programacion />
         <div className="container-right">
@@ -48,16 +51,19 @@ export function PreventaPage() {
       <div className="questions">
         <Questions />
       </div>
-      <div className="footer">
-        <Footer />
-      </div>
+
+      <Footer />
     </Container_Preventa>
   );
 }
 const Container_Preventa = styled.div`
   width: 100%;
-  height: 100%;
   overflow-x: hidden;
+
+  .navbar-container {
+    width: 100%;
+    height: 80px;
+  }
 
   .subcontainer-preventa {
     width: 100%;
@@ -68,29 +74,21 @@ const Container_Preventa = styled.div`
     }
 
     .container-right {
-      width: 20%;    
+      width: 20%;
       padding: 20px;
 
       @media (max-width: 760px) {
         width: 100%;
-      
         background-color: ${(props) => props.theme.color3};
       }
     }
   }
   .questions {
     width: 100%;
-    height: 500px;
-    padding: 30px 40px; 
+    padding: 30px 40px;
 
     @media (max-width: 760px) {
       padding: 0 10px;
-      height: 640px;
     }
-  }
-
-  .footer {
-    width: 100%;
-    height: 400px;
   }
 `;

@@ -41,20 +41,31 @@ export function Participantes() {
 }
 const ContainerParticipantes = styled.div`
   width: 100%;
-  height: 400px;
-  padding: 0 100px;
+  padding:  100px;
+  
+
+  @media (max-width: 760px) {
+    padding: 0;
+    width: 95%;
+    margin: 0 auto;
+
+  }
 
   .title-participantes {
     text-align: center;
     margin-top: 40px;
+
+    @media (max-width: 760px) {
+      font-size: 30px;
+    }
   }
 
   .subcontainer-participantes {
-    width: 100%;
-    height: 80%;
+    width: 100%;   
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-top: 40px;
   }
 
   .logo {
@@ -62,6 +73,11 @@ const ContainerParticipantes = styled.div`
     height: 120px;
     border-radius: 50%;
     background-color: green;
+
+    @media (max-width: 760px) {
+      width: 70px;
+      height: 70px;
+    }
 
     .img-logo {
       width: 100%;

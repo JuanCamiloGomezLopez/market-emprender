@@ -1,13 +1,13 @@
 import styled from "styled-components";
-import { Navbar } from "../components/navbar/Navbar";
 import { TextPortada } from "../components/eventos/contenidovisualportada";
 import { EventSingle } from "../components/eventos/event.single";
+import { NavbarComponent } from "../components/Elements_IU/navbarcomponent/Navbar.tipico";
 
 
 export function EventosPage() {
   return (
-    <Container>
-      <Navbar />
+    <Container_eventos_page>
+      <NavbarComponent />
       <div className="imagen">
         <img
           className="img-fondo"
@@ -38,16 +38,16 @@ export function EventosPage() {
 
       <EventSingle />
      
-    </Container>
+    </Container_eventos_page>
   );
 }
-const Container = styled.div`
+const Container_eventos_page = styled.div`
   width: 100%;
   
   .imagen {
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 500px; 
 
     &::before {
       content: "";
@@ -57,6 +57,9 @@ const Container = styled.div`
       top: 0;
       left: 0;
       background-color: rgba(0, 0, 0, 0.3);
+      @media (max-width: 760px){
+        background-color: rgba(0, 0, 0, 0.4);
+    }
     }
     .img-fondo {
       width: 100%;
@@ -67,14 +70,16 @@ const Container = styled.div`
 
   .boxes{
     width: 660px;
-    height: 140px;    
-
+    height: 140px; 
     position: absolute;
     right: 0;
     top: 450px;
     display: flex;
     align-items: center;
     justify-content: center;
+    @media (max-width: 760px){
+      width: 100%;
+    }
 
     .fecha{
         width: 25%;

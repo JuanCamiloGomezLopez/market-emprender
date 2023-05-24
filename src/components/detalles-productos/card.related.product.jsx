@@ -1,10 +1,9 @@
 import styled from "styled-components";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { ButtonCar } from "../Elements_IU/Buttons-car";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 export function CardRelated({ item, products_related }) {
-
   return (
     <Container>
       <div className="imagen-relate">
@@ -31,36 +30,29 @@ export function CardRelated({ item, products_related }) {
         </div>
       </div>
 
-      <Link to="/product" state={{product_detail: item, products_related: products_related}}>
+      <Link
+        to="/product"
+        state={{ product_detail: item, products_related: products_related }}
+      >
         <div className="btn-vermas">
           <ButtonCar buttonType="default">VER MAS INFORMACIÓN</ButtonCar>
         </div>
-      </Link>   
-
-    
+      </Link>
     </Container>
   );
 }
 const Container = styled.div`
   width: 22%;
-  height: auto;
   background-color: ${(props) => props.theme.color4};
   border-radius: 10px;
 
-  .title {
-    color: white;
+  @media (max-width: 760px) {
+    width: 49%;
+    margin-top: 10px;
   }
 
-  .category {
-    width: 80px;
-    height: 25px;
-    border-radius: 8px;
-    background-color: ${(props) => props.theme.color1};
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .title {
     color: white;
-    margin: 20px 0 0 20px;
   }
 
   .imagen-relate {
@@ -69,6 +61,9 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     padding: 10px;
+    @media (max-width: 760px) {
+      height: 150px;
+    }
 
     .product-img {
       width: 100%;
@@ -102,6 +97,10 @@ const Container = styled.div`
     margin-top: 20px;
     padding: 0 15px;
 
+    @media (max-width: 760px) {
+      flex-direction: column;
+    }
+
     .price-product {
       display: flex;
       align-items: center;
@@ -134,6 +133,9 @@ const Container = styled.div`
 
       .stars {
         color: ${(props) => props.theme.color3};
+        @media (max-width: 760px) {
+          margin-top: 10px;
+        }
       }
     }
   }
@@ -156,6 +158,5 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     padding: 10px;
-    
   }
 `;

@@ -37,35 +37,17 @@ export function Actividades() {
   );
 }
 const Container_Actividades = styled.div`
-  width: 100%;
-  height: 300px;
-  padding: 0 80px;
-  display: flex;
+  width: 100%; 
+  padding:  80px;
+  display: flex;  
   align-items: center;
   justify-content: center;
 
-  .categorie-actividad {
-    width: 250px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    .actividad {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 1px solid ${(props) => props.theme.color3};
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      .feria {
-        width: 40%;
-        height: 40%;
-        color: ${(props) => props.theme.color3};
-      }
-    }
-  }
+ @media (max-width: 760px){
+  width: 95%;
+  padding: 0;
+  margin: 0 auto;
+  margin-bottom: 40px;
+ }
+ 
 `;

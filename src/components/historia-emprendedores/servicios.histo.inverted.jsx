@@ -33,6 +33,9 @@ const Container_servicios_historias = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 30px;
+  @media (max-width: 760px) {
+           height: 150px;
+            }
 
   .imagen {
     width: 45%;
@@ -49,6 +52,9 @@ const Container_servicios_historias = styled.div`
     width: 55%;
     padding: 40px;
     line-height: 20px;
+    @media (max-width: 760px) {
+            padding: 10px;
+            }
 
     .title-product {
       margin-bottom: 10px;

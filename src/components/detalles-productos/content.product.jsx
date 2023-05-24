@@ -90,10 +90,14 @@ export function ContentProduct({preventa_item}) {
 }
 const Container_product = styled.div`
   width: 100%;
-  height: 100%;
+ 
   display: flex;
   flex-direction: column;
   margin-left: 30px;
+  @media (max-width: 760px) {
+    margin-left: 0;
+    margin-top: 20px;
+      }
 
   .stars {
     display: flex;

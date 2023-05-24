@@ -31,22 +31,31 @@ const Container_servicios_historias = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
+  @media (max-width: 760px) {
+           height: 150px;
+            }
 
   .imagen {
     width: 45%;
     height: 100%;
+    
 
     .img-papeleria {
       width: 100%;
       object-fit: cover;
       height: 100%;
       border-radius: 10px;
+     
     }
   }
   .content-service {
     width: 55%;
     padding: 40px;
     line-height: 20px;
+    @media (max-width: 760px) {
+            padding: 10px;
+            }
 
     .title-product {
       margin-bottom: 10px;

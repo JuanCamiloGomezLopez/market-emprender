@@ -49,7 +49,6 @@ export function InformacionEventos() {
 }
 const ContainerInfo = styled.div`
   width: 100%;
-  height: 400px;
   background-color: ${(props) => props.theme.color1};
   display: flex;
   flex-direction: column;
@@ -57,38 +56,59 @@ const ContainerInfo = styled.div`
   justify-content: center;
   position: relative;
 
-.complet-container{
-    padding: 0 80px;
-
-     .title-main {
-    color: white;
-    text-align: center;
-    margin-bottom: 30px;
-  }
-
-  .subcontainer-info {
-    height: 95%;
+  .complet-container {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;  
+    padding: 80px;
 
-    .box1 {
-      width: 50%;
-      height: 100%;
-      padding: 0 40px;
-      text-align: justify;
+    
+    @media (max-width: 760px) {
+          padding: 0;
+        }
 
-      .title-info {
-        text-align: center;
-        color: white;
-        margin-bottom: 20px;
-      }
-      .subtitle-info {
-        color: white;
+    .title-main {
+      color: white;
+      text-align: center;
+      margin-bottom: 30px;
+      @media (max-width: 760px) {
+       margin-top: 40px;
+        
+       
       }
     }
-  } 
-}
 
+    .subcontainer-info {
+      height: 95%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @media (max-width: 760px) {
+        flex-direction: column;
+        
+       
+      }
+
+      .box1 {
+        width: 50%;
+        height: 100%;
+        padding: 0 40px;
+        text-align: justify;
+
+        @media (max-width: 760px) {
+          width: 100%;
+          margin: 20px auto;            
+        }
+
+        .title-info {
+          text-align: center;
+          color: white;
+          margin-bottom: 20px;
+        }
+        .subtitle-info {
+          color: white;
+        }
+      }
+    }
+  }
 `;

@@ -4,7 +4,7 @@ import { Button } from "../Elements_IU/Buttons";
 import { Link } from "react-router-dom";
 
 export function PromocionPreventa() {
-  const go_to_preshop = () => {};
+
   return (
     <Container_Promocion>
       <div className="content">
@@ -34,6 +34,7 @@ const Container_Promocion = styled.div`
   
   @media (max-width: 760px) {
      height: 250px;
+
     }
 
   .container-mujer {

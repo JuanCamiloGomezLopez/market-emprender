@@ -5,22 +5,21 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectcartItems } from "../../store/cart/cart.selector";
 
-export function ContinuarCompra({ openmodalcontinuar, setOpenmodalcontinuar, redireccion }) {
+export function ContinuarCompra({
+  openmodalcontinuar,
+  setOpenmodalcontinuar,
+  redireccion,
+}) {
   const carritems = useSelector(selectcartItems);
-
   const arraycaritems = Object.values(carritems);
-
   const Cerrarmessage = () => {
     setOpenmodalcontinuar(false);
   };
-
   const open_modal_continuar = () => {};
-
   if (!openmodalcontinuar) {
     return;
   }
 
- 
   return (
     <Container_Modal>
       <div
@@ -42,9 +41,9 @@ export function ContinuarCompra({ openmodalcontinuar, setOpenmodalcontinuar, red
                 <h5>Pasteles y Tortas</h5>
                 <p>{item.descripccion}</p>
               </div>
-              <div className="count-container">
-                <div className="count">
-                  <h5>{item.quantity}</h5>
+              <div className="count-container-modal">
+                <div className="count-modal">
+                  <h5 className="count-text-modal">{item.quantity}</h5>
                 </div>
               </div>
 
@@ -97,10 +96,21 @@ const Container_Modal = styled.div`
     background-color: white;
     position: relative;
 
+    @media (max-width: 760px) {
+      padding: 5px;
+      width: 95%;
+      margin: 0 auto;
+    }
+
     .title-modal-carro {
       display: flex;
       align-items: center;
       margin-bottom: 20px;
+
+      @media (max-width: 760px) {
+      margin-top: 20px;
+     
+    }
 
       .img-car {
         width: 30px;
@@ -110,25 +120,70 @@ const Container_Modal = styled.div`
     .container-item-modal {
       overflow-y: auto;
       height: 260px;
-      
-     
 
       .container-car {
         width: 100%;
         height: 80px;
         display: grid;
-        grid-template-columns: 25% 35% 25% 15%;
+        grid-template-columns: 20% 40% 25% 15%;
         align-items: center;
         justify-content: space-around;
         margin-top: 20px;
         border-bottom: 1px solid rgb(209, 209, 209);
-        
+
+        @media (max-width: 760px) {
+         
+          height: 60px;
+          padding-right: 10px;
+        }
+
+        .count-container-modal {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+
+          .count-text {
+            font-weight: 600;
+            margin-right: 10px;
+          }
+
+          .count-modal {
+            width: 70px;
+            height: 45px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1.5px solid ${(props) => props.theme.color1};
+            margin-right: 20px;
+
+            @media (max-width: 760px) {
+              width: 50px;
+              height: 35px;
+            }
+
+            input {
+              width: 50%;
+              height: 100%;
+              border: none;
+              &:focus {
+                border: none;
+                outline: none;
+              }
+            }
+          }
+        }
 
         .product-img-car {
           width: 90px;
           height: 70px;
           object-fit: cover;
           margin-left: 10px;
+
+          @media (max-width: 760px) {
+            width: 50px;
+            height: 50px;
+          }
         }
         .price {
           margin-right: 10px;
@@ -143,6 +198,12 @@ const Container_Modal = styled.div`
       position: absolute;
       bottom: 20px;
       right: 20px;
+
+      @media (max-width: 760px) {
+           justify-content: space-between;
+           right: 0;
+           padding: 0 10px;
+          }
 
       .boton1 {
         margin-left: 10px;

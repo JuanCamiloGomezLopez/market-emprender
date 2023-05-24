@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Navbar_Preventa } from "../components/Preventa/Navbar_preventa/navbar_preventa";
 import { TituloEmprendedor } from "../components/historia-emprendedores/Titulo.emprendedor";
 import { ServiciosHistorias } from "../components/historia-emprendedores/servicios.historias";
 import { Footer } from "../components/Preventa/footer/footer";
@@ -10,29 +9,28 @@ import { FormInput } from "../components/Elements_IU/Form-input";
 import { useSelector } from "react-redux";
 import { selectEmprendimientosMap } from "../store/emprendimientos-list/list.selector";
 import { useState, useEffect } from "react";
-
+import { NavbarComponent } from "../components/Elements_IU/navbarcomponent/Navbar.tipico";
 
 export function HistoriaEmprendedor() {
   const listemprendedoresMap = useSelector(selectEmprendimientosMap);
   const arraylistemprendedoresMap = Object.values(listemprendedoresMap);
-
-  const [name, setName]= useState(arraylistemprendedoresMap[0][0].emprendimiento)
+  const [name, setName] = useState(
+    arraylistemprendedoresMap[0][0].emprendimiento
+  );
 
   const [infoemprendimiento, setInfoemprendimiento] = useState(
     listemprendedoresMap[name]
-  ); 
-
-  console.log(infoemprendimiento)
+  );
 
   useEffect(() => {
     setInfoemprendimiento(listemprendedoresMap[name]);
   }, [name]);
 
-
-
   return (
-    <Container>
-      <Navbar_Preventa />
+    <ContainerHistorypage>
+     <div className="navbar-container">
+        <NavbarComponent type="historias"/>
+      </div>
 
       <div className="subcontainer-historia">
         <div className="listacontainer">
@@ -45,11 +43,12 @@ export function HistoriaEmprendedor() {
           <FormInput type="text" placeholder="Buscar Emprendimiento" />
 
           {arraylistemprendedoresMap.map((item) => (
-
-            <div            
-              onClick={()=>setName(item[0].emprendimiento)}                            
+            <div
+              onClick={() => setName(item[0].emprendimiento)}
               key={item[0].id}
-              {...(name === item[0].emprendimiento ? {className:"active"} : {className:"emprendimiento"})}
+              {...(name === item[0].emprendimiento
+                ? { className: "active" }
+                : { className: "emprendimiento" })}
             >
               <div className="imagen">
                 <img className="img-item" src={item[0].imageUrllogo} />
@@ -66,16 +65,13 @@ export function HistoriaEmprendedor() {
 
         <div className="history">
           <div className="portada-preventa">
-            {infoemprendimiento[0].categoria === "Artesanias" ?
-            <img src="https://i.ibb.co/MMX30TD/25740-laboratorio-guajira-artesanias-colombia-2017-g.jpg" /> :
-            infoemprendimiento[0].categoria === "Licor" ?
-            
-            <img src="https://i.ibb.co/b2S15j1/64592e32e27eb.jpg" /> :
-          
-            <img src="https://i.ibb.co/Q8LsPSx/lapices.jpg" /> 
-          
-          }
-            
+            {infoemprendimiento[0].categoria === "Artesanias" ? (
+              <img src="https://i.ibb.co/MMX30TD/25740-laboratorio-guajira-artesanias-colombia-2017-g.jpg" />
+            ) : infoemprendimiento[0].categoria === "Licor" ? (
+              <img src="https://i.ibb.co/b2S15j1/64592e32e27eb.jpg" />
+            ) : (
+              <img src="https://i.ibb.co/Q8LsPSx/lapices.jpg" />
+            )}
           </div>
 
           <div className="title-emprendedor">
@@ -148,16 +144,19 @@ export function HistoriaEmprendedor() {
         </div>
       </div>
 
-      <div className="footer">
+    
         <Footer />
-      </div>
-    </Container>
+   
+    </ContainerHistorypage>
   );
 }
-const Container = styled.div`
+const ContainerHistorypage = styled.div`
   width: 100%;
-  height: 100%;
-  
+
+  .navbar-container {
+    width: 100%;
+    height: 80px;
+  }
 
   .title-historia {
     text-align: center;
@@ -165,14 +164,22 @@ const Container = styled.div`
 
   .subcontainer-historia {
     width: 100%;
-    height: 100%;
     display: flex;
+
+    @media (max-width: 760px) {
+      flex-direction: column;
+    }
 
     .listacontainer {
       width: 20%;
-      height: auto;
+
       padding: 20px;
       background-color: ${(props) => props.theme.color4};
+
+      @media (max-width: 760px) {
+        width: 100%;
+        background-color: white;
+      }
 
       .subtitle {
         padding: 10px 10px 20px 10px;
@@ -189,7 +196,7 @@ const Container = styled.div`
         padding-left: 5px;
         cursor: pointer;
 
-        &:visited{
+        &:visited {
           background-color: red;
         }
 
@@ -221,7 +228,6 @@ const Container = styled.div`
         padding-left: 5px;
         cursor: pointer;
         background-color: ${(props) => props.theme.color3};
-        
 
         .imagen {
           width: 50px;
@@ -245,6 +251,10 @@ const Container = styled.div`
       width: 80%;
       height: auto;
 
+      @media (max-width: 760px) {
+        width: 100%;        
+      }
+
       .portada-preventa {
         width: 100%;
         height: 300px;
@@ -254,6 +264,10 @@ const Container = styled.div`
         justify-content: center;
         position: relative;
         z-index: 0;
+
+        @media (max-width: 760px) {
+          height: 250px;
+        }
 
         .titleportada {
           color: #000000;
@@ -265,7 +279,6 @@ const Container = styled.div`
           height: 100%;
           object-fit: cover;
           object-position: center;
-          position: absolute;
           z-index: 0;
         }
       }
@@ -276,10 +289,18 @@ const Container = styled.div`
       .content {
         width: 55%;
         margin: 160px auto 20px;
-        
+
+        @media (max-width: 760px) {
+          width: 80%;
+          margin: 0 auto;   
+        }
 
         .block {
           margin-bottom: 30px;
+          @media (max-width: 760px) {
+            margin-top: -50px;
+            margin-bottom: 60px;
+          }
         }
 
         .parrafo {
@@ -296,25 +317,33 @@ const Container = styled.div`
             height: 420px;
             object-fit: cover;
             border-radius: 20px;
+            @media (max-width: 760px) {
+              height: 200px;
+            }
           }
         }
         .boton-historia {
           display: flex;
           align-items: center;
           justify-content: center;
+          @media (max-width: 760px) {
+            
+             margin-bottom: 20px;
+            }
         }
-        .block-btn{
+        .block-btn {
           display: flex;
           justify-content: space-around;
           align-items: center;
           margin-bottom: 30px;
+
+          @media (max-width: 760px) {
+             flex-direction: column;
+             margin-bottom: 80px;
+            }
         }
       }
     }
   }
 
-  .footer {
-    width: 100%;
-    height: 400px;
-  }
 `;

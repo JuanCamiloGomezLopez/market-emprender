@@ -22,6 +22,13 @@ const Container = styled.div`
   width: 40%;
   top: 200px;
   left: 100px;
+  
+  @media (max-width: 760px){
+      width: 100%;
+      left: 0;
+      top: 150px;
+      text-align: center;
+    }
 
   .cursiva {
     font-family: "Dancing Script", cursive;
@@ -29,14 +36,23 @@ const Container = styled.div`
     margin-bottom: 10px;
     font-weight: 600;
     color: ${(props) => props.theme.color2};
+    @media (max-width: 760px){
+      color: white;
+    }
   }
   .big-text-event {
     font-size: 40px;
     color: white;
     margin-bottom: 10px;
+    @media (max-width: 760px){
+      font-size: 30px;
+    }
   }
   .parrafo-event {
     color: #dadada;
     margin-bottom: 30px;
+    @media (max-width: 760px){
+      margin-bottom: 10px;
+    }
   }
 `;
