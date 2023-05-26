@@ -7,7 +7,6 @@ import { selectIsSiginOpen } from "../../../store/user/user.selector";
 import { useSelector, useDispatch } from "react-redux";
 import { sigOutUser } from "../../../utils/firebase.utils";
 
-
 export function UsuarioNavbar() {
   const currentuser = useSelector((state) => state.user.currentUser);
   const [openoutuser, setOpenoutUser] = useState(false);

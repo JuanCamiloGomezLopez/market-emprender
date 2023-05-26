@@ -16,16 +16,16 @@ export function NavbarComponent({ type }) {
   return (
     <Container_navbar clicke={clicke}>
       <Logo />
-      <ItemsNavbar clicke={clicke} type={type} />
-
+      <ItemsNavbar clicke={clicke} type={type} />   
+      {type==="perfil" ? null : <UsuarioNavbar />}  
+             
       {type === "tienda" || type === "preventa" ? <CartIcon /> : null}
       {opencar ? <CarDropdown /> : null}
-
-      <UsuarioNavbar />
       <HamburgerMenu
         clicke={clicke}
         onClick={() => setClick(!clicke)}
       ></HamburgerMenu>
+     
       <Authentication />
     </Container_navbar>
   );

@@ -6,10 +6,11 @@ import { NavbarComponent } from "../Elements_IU/navbarcomponent/Navbar.tipico";
 export function PageUser() { 
   const productfavorite = useSelector(selectIsFavorite);
   const arrayprodcut = Object.values(productfavorite);
+  console.log(productfavorite)
 
   return (
     <Container>
-      <NavbarComponent />
+      <NavbarComponent type="perfil"/>
       <div className="subcontainer">
         <div className="registro-compras-container">
           <h2 className="titulo1">Mi Historial de compras</h2>

@@ -16,12 +16,7 @@ export function InformacionPersonal() {
           <h4>
             <strong>Nombre</strong>: {currentuser ? currentuser.displayName : "Sin información"}
           </h4>
-        </div>
-        <div className="content-text-cel">
-          <h4>
-            <strong>Celular</strong>: xxxxxxxxxxxx
-          </h4>
-        </div>
+        </div>       
       </div>
     </Container>
   );
@@ -37,14 +32,19 @@ const Container = styled.div`
   .datos {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: 20px;
+    @media(max-width: 760px){
+      flex-direction: column;
+      padding:0;
+    } 
   }
-
-  .content-text-cel{
-    @media (max-width: 760px) {
-      display: none;
-    }
+  .content-text{
+    padding-right: 60px;
+    @media(max-width: 760px){
+      padding-right: 0;
+      padding: 10px;
+    } 
   }
   
 `;

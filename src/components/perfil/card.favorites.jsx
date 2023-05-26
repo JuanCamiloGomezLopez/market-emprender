@@ -14,7 +14,6 @@ export function CardFavorites({ products }) {
  
   return (
     <Container>   
-
         <div>
           <img className="img-caja" src={imageUrl} />
         </div>   

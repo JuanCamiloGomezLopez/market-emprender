@@ -1,26 +1,47 @@
 import styled from "styled-components";
 import { FormInput } from "../Elements_IU/Form-input";
 import { Button } from "../Elements_IU/Buttons";
-
+import { useState } from "react";
 
 export function DatosEnvio() {
+  const [direccion, setDireccion] = useState("");
+
+  const Onchangedata = (e) => {
+    const { name, value } = e.target;
+    setDireccion({ ...direccion, [name]: value });
+  };
   return (
     <Container>
       <div className="subcontainer-envio">
         <div className="envio-left">
           <FormInput
             type="text"
+            onChange={Onchangedata}
             placeholder="Ingrese la dirección de domicilio"
+            name="dirección"
           />
           <br></br>
-          <FormInput type="text" placeholder="Ingrese el departamento" />
-        </div>
-        <div className="envio-right">
-          <FormInput type="text" placeholder="Ingrese la ciudad" />
-          <br></br>
-          <FormInput
+         
+            <FormInput
+            onChange={Onchangedata}
+            name="adicional"
             type="text"
             placeholder="Información adicional ej: unidad, Bloque, apto, etc"
+          />
+        </div>
+        <div className="envio-right">
+        <FormInput
+            onChange={Onchangedata}
+            name="departamento"
+            type="text"
+            placeholder="Ingrese el departamento"
+          />
+          <br></br>
+          <FormInput
+            onChange={Onchangedata}
+            name="ciudad"
+            type="text"
+            placeholder="Ingrese la ciudad"
           />
         </div>
       </div>

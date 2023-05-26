@@ -21,7 +21,9 @@ export function ListProducts({ cartitem }) {
   return (
     <Container_list_products>
       <div className="container-card">
-        <img className="product-img-car" src={imageUrl}></img>
+        <div className="container-image-check">
+          <img className="product-img-car" src={imageUrl}></img>
+        </div>
 
         <div className="help-responsive">
           <div className="help2-responsive">
@@ -72,7 +74,6 @@ const Container_list_products = styled.div`
   justify-content: space-between;
   overflow-y: auto;
 
-
   @media (max-width: 760px) {
     padding: 0;
   }
@@ -92,13 +93,10 @@ const Container_list_products = styled.div`
       border: none;
     }
 
-    .product-img-car {
-      width: 100px;
+    .container-image-check {
+      width: 130px;
       height: 80px;
-      object-fit: cover;
       margin-left: 20px;
-      border-radius: 5px;
-
       @media (max-width: 760px) {
         width: 80px;
         height: 90px;
@@ -106,11 +104,19 @@ const Container_list_products = styled.div`
       }
     }
 
+    .product-img-car {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 5px;
+
+     
+    }
+
     .help-responsive {
       width: 100%;
       display: grid;
       grid-template-columns: 60% 40%;
-
 
       @media (max-width: 760px) {
         display: flex;

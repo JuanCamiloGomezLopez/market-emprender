@@ -1,8 +1,28 @@
 import styled from "styled-components";
-import { Button } from "../Elements_IU/Buttons";
 import { ButtonCar } from "../Elements_IU/Buttons-car";
+import { useState } from "react";
+import { ChangeAdress } from "../modales/modal-change-adress";
 
 export function ItemproductEnvio({ item, caritemsMap }) {
+  const initialvalue = [
+    {
+      dirección: "",
+      adicional: "",
+      departamento: "",
+      ciudad: "",
+    },
+  ];
+
+  const [openmodalchangeadress, setOpenmodalchangeadress] = useState(false);
+  const [changedadress, setChangedadress] = useState("");
+
+  
+    console.log(changedadress);
+  
+
+  const openmodal = () => {
+    setOpenmodalchangeadress(!openmodalchangeadress);
+  };
   return (
     <Container>
       <h4 className="title-container">
@@ -25,14 +45,29 @@ export function ItemproductEnvio({ item, caritemsMap }) {
           })}
         </div>
         <div className="help-responsive3">
-          <div className="direccion">
-            <h6>
-              <strong>Dirección de envío</strong>: Dirección Principal
-            </h6>
-            <div className="btn-cambio-direccion">
-              <ButtonCar buttonType="amarillo">Cambiar dirección</ButtonCar>
+          {changedadress === "" ? (
+            <div className="direccion">
+              <h6>
+                <strong>Dirección de envío</strong>: Dirección Principal
+              </h6>
+              <div className="btn-cambio-direccion">
+                <ButtonCar onClick={openmodal} buttonType="amarillo">
+                  Cambiar dirección
+                </ButtonCar>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div>
+              <h6 className="title-change">
+                <strong>Dirección de envío</strong>
+              </h6>
+              <h6>{changedadress.dirección}</h6>
+              <h6>{changedadress.departamento}</h6>
+              <h6>{changedadress.ciudad}</h6>
+              <h6>{changedadress.adicional}</h6>
+            </div>
+          )}
+
           <div className="costo-envio">
             <h6> Costo de envío </h6>
             <h5 className="price">
@@ -41,6 +76,13 @@ export function ItemproductEnvio({ item, caritemsMap }) {
           </div>
         </div>
       </div>
+      <ChangeAdress
+        openmodalchangeadress={openmodalchangeadress}
+        setOpenmodalchangeadress={setOpenmodalchangeadress}
+        emprendedor={item}
+        changedadress={changedadress}
+        setChangedadress={setChangedadress}
+      />
     </Container>
   );
 }
@@ -77,7 +119,7 @@ const Container = styled.div`
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      background-color: #f0f0f0;      
+      background-color: #f0f0f0;
       margin-left: 10px;
       overflow-x: hidden;
 
@@ -117,13 +159,14 @@ const Container = styled.div`
         width: 100%;
         padding: 10px;
       }
+      .title-change{
+        margin-bottom: 8px;
+      }
 
       .direccion {
         width: 75%;
         line-height: 18px;
         margin-right: 20px;
-
-
 
         .btn-cambio-direccion {
           margin-top: 10px;

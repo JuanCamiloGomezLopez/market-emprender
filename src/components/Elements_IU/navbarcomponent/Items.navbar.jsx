@@ -2,11 +2,12 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { setSigninOpen } from "../../../store/user/user.reduce";
 import { selectIsSiginOpen } from "../../../store/user/user.selector";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 export function ItemsNavbar({ clicke, type }) {
   const isopenmodalsign = useSelector(selectIsSiginOpen);
   const currentuser = useSelector((state) => state.user.currentUser);
+  const dispatch = useDispatch()
 
   return (
     <ContainerItemsNavbar clicke={clicke} type={type}>
@@ -44,7 +45,7 @@ export function ItemsNavbar({ clicke, type }) {
             <span> Perfil</span>
           </Link>
         ) : (
-          <span onClick={() => dispatch(setSigninOpen(!isopenmodalsign))}>
+          <span className="cursor" onClick={() => dispatch(setSigninOpen(!isopenmodalsign))}>
             Perfil
           </span>
         )}
@@ -80,6 +81,9 @@ const ContainerItemsNavbar = styled.div`
       flex-direction: column;
       justify-content: center;
       touch-action: none;
+    }
+    .cursor{
+      cursor: pointer;
     }
   }
 
