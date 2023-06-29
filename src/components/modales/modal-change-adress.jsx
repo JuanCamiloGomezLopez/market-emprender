@@ -8,17 +8,19 @@ export function ChangeAdress({
   setOpenmodalchangeadress,
   emprendedor,
   changedadress,
-  setChangedadress
+  setChangedadress,
 }) {
-
   const Cerrarmessage = () => {
     setOpenmodalchangeadress(false);
-    
   };
 
   const Onchangedata = (e) => {
     const { name, value } = e.target;
-    setChangedadress({ ...changedadress, [name]: value,  "emprenedor": emprendedor});
+    setChangedadress({
+      ...changedadress,
+      [name]: value,
+      emprenedor: emprendedor,
+    });
   };
 
   if (!openmodalchangeadress) {
@@ -99,7 +101,6 @@ const Container_Modal = styled.div`
 
   .subcontainer {
     width: 600px;
-
     border-radius: 8px;
     position: fixed;
     opacity: 30;

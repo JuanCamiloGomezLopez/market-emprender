@@ -6,6 +6,5 @@ export const selectFavoriteReducer = (state) => state.favorite_product;
 // ****************** guarda en memoria ************************
 
 export const selectIsFavorite = createSelector(
-  [selectFavoriteReducer],
-  (favorite_slice) => favorite_slice.favorite_product
+  [selectFavoriteReducer],  (favorite_slice) => favorite_slice.favorite_product
 );

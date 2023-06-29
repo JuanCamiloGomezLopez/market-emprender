@@ -32,7 +32,7 @@ const Container_Emprendimiento_preventa = styled.div`
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    gap: 25px;
     margin: 0 auto;
     align-items: stretch;
     position: relative;

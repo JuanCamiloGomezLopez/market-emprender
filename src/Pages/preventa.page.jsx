@@ -44,8 +44,7 @@ export function PreventaPage() {
       <div className="subcontainer-preventa">
         <Programacion />
         <div className="container-right">
-          <Carrito />
-          <Historias />
+          <Carrito />        
         </div>
       </div>
       <div className="questions">
@@ -67,7 +66,7 @@ const Container_Preventa = styled.div`
 
   .subcontainer-preventa {
     width: 100%;
-    display: flex;
+    display: flex; 
 
     @media (max-width: 760px) {
       flex-direction: column;

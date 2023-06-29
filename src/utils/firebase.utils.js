@@ -150,7 +150,7 @@ export const createUserDocumentFromAuth = async (
 /* agrega los productos favoritos a cada usuario registrado */
 
 export const handleEdit = async (preventa_item, useruid) => {  
-  await updateDoc( doc(db, "users", useruid), {[`${preventa_item.producto}`]: preventa_item});
+  await updateDoc( doc(db, "users", useruid), preventa_item);
 };
 
 /* borra los productos favoritos a cada usuario registrado */

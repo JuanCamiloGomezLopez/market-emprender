@@ -4,7 +4,7 @@ import { useInterval } from "usehooks-ts";
 
 export function timeLeft() {
   const now = new Date();
-  const end = new Date("May 30, 2023 23:59:00");
+  const end = new Date("Jul 30, 2023 23:59:00");
 
   const remainingTime = end.getTime() - now.getTime();
 

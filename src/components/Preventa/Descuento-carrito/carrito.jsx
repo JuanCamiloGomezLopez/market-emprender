@@ -37,7 +37,7 @@ const Container_carrito = styled.div`
   padding: 0 0 10px 0;
   border-radius: 8px;
   background-color: #f1f1f1;
-  height: 690px;
+  height: 860px;
   position: relative;
 
   @media (max-width: 760px) {
@@ -47,9 +47,10 @@ const Container_carrito = styled.div`
 
   .container-product {
     width: 100%;
-    height: 570px;
+    height: 730px;
     overflow-y: auto;
     overflow-x: hidden;
+ 
   }
 
   .title-cart {

@@ -59,16 +59,9 @@ export function Programacion() {
         <h2 className="title">{getname}</h2>
       </div>
       <Emprendimientos preventa={preventa} />
-      <h2 className="text-search">Buscar por Emprendedores</h2>
-      <p className="text-dayp">
-        Si deseas saber la fecha de preventa de un emprendimiento especifico
-        puedes buscarlo aqui!
-      </p>
-      <BuscaEmprendimiento searchemp={searchemp} setSearchemp={setSearchemp} />
-      <Diaemprendimiento
-        searchemp={searchemp}
-        listadeemprendedores={listadeemprendedores}
-      />
+      
+        
+      
     </Container_programacion_preventa>
   );
 }
